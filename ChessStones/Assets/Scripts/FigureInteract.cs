@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class FigureInteract : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject mark;
+    [SerializeField] private GameObject visualModel;
+
+    public GameFieldSquare currentSquare { get; set; }
+
+    public void SelectFigure()
     {
-        
+        visualModel.transform.localPosition = Vector3.up;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeselectFigure()
     {
-        
+        visualModel.transform.localPosition = Vector3.zero;
+    }
+
+    public void SetAtSquare(GameFieldSquare square)
+    {
+        if (currentSquare != null) currentSquare.currentFigure = null;
+        currentSquare = square;
+
+        transform.position = square.transform.position;
+        currentSquare.currentFigure = this;
+
+    }
+
+    private void OnMouseDown()
+    {
+        GameManager.Instance.SelectFigure(this);
+    }
+
+    private void OnMouseEnter()
+    {
+        mark.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        mark.SetActive(false);
     }
 }
