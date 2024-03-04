@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
+public struct FigureTeamInfo
+{
+    public List<FigurePlacementInfo> placements;
+}
+
+[System.Serializable]
+public struct FigurePlacementInfo
+{
+    public FigureInteract figurePrefab;
+    public Vector2 startPosition;
+}
+
 public class GameFieldManager : MonoBehaviour
 {
     [SerializeField] private Vector2 boardSize;
     [SerializeField] private Vector3 spawnOffset;
     [SerializeField] private GameFieldSquare GameFieldSquarePrefab;
-    [SerializeField] private FigureInteract figurePrefab;
+    [SerializeField] private FigurePlacement_SO figuresPlacements;
 
     private List<List<GameFieldSquare>> fieldSquares = new List<List<GameFieldSquare>>();
-    private List<FigureInteract> figures = new List<FigureInteract>();
+
+    private List<List<FigureInteract>> playersFigures = new List<List<FigureInteract>>();
 
     private Vector3 _spawnOffset = Vector3.zero;
     private bool _white = true;
@@ -21,7 +35,7 @@ public class GameFieldManager : MonoBehaviour
     private void Start()
     {
         if(fieldSquares.Count == 0) SpawnBoard();
-        SpawnFigure();
+        PlaceFigures();
     }
 
     [ContextMenu("SpawnBoard")]
@@ -115,13 +129,46 @@ public class GameFieldManager : MonoBehaviour
 
     }
 
-    public void SpawnFigure()
+
+
+
+    [ContextMenu("PlaceFigures")]
+    public void PlaceFigures()
     {
-        FigureInteract figure = Instantiate(figurePrefab);
+        ClearFigures();
 
-        figure.SetAtSquare(fieldSquares[0][0]);
+        FigureInteract figure;
+        Vector2 spawnPos = Vector2.zero;
 
+        for (int i = 0; i < GameManager.Instance.amountOfTeams; i++)
+        {
+            playersFigures.Add(new List<FigureInteract>());
+            
+            for (int k = 0; k < figuresPlacements.figuresPlacement[i].placements.Count; k++)
+            {
+                spawnPos = figuresPlacements.figuresPlacement[i].placements[k].startPosition;
+                figure = Instantiate(figuresPlacements.figuresPlacement[i].placements[k].figurePrefab);
+                figure.Setup(i);
+                playersFigures[i].Add(figure);
+
+                figure.SetAtSquare(fieldSquares[(int)spawnPos.y][(int)spawnPos.x]); //changed x and y places cause first array index is rows (y position)
+            }
+
+        }
     }
 
+    public void ClearFigures()
+    {
+        for(int i = 0; i < playersFigures.Count; i++)
+        {
+            for (int k = 0; k < playersFigures[i].Count; k++)
+            {
+                Destroy(playersFigures[i][k].gameObject);
+            }
+            playersFigures[i].Clear();
+        }
+
+        playersFigures.Clear();
+    }
 
 }
