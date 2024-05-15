@@ -1,0 +1,26 @@
+var class_figure_interact =
+[
+    [ "Attack", "class_figure_interact.html#a650f1378bc0cc4e8ed0962b8ccb7e68d", null ],
+    [ "Death", "class_figure_interact.html#ae5a33335bd18cdc99bdd4ea856e4019e", null ],
+    [ "DeselectFigure", "class_figure_interact.html#a44b9cf956769c042cd17a28e4ff2636b", null ],
+    [ "GetDefaultMoves", "class_figure_interact.html#a7d1d5a64a99c63f3ea46cbf5121ca5bd", null ],
+    [ "OnMouseDown", "class_figure_interact.html#aca066df1742915ef3d84888789bbfeea", null ],
+    [ "OnMouseEnter", "class_figure_interact.html#a9d6a4baa79d74bc4172e7d03228832e5", null ],
+    [ "OnMouseExit", "class_figure_interact.html#ae08be262b639aad145b62059b91e0ba5", null ],
+    [ "SelectFigure", "class_figure_interact.html#a7c9fcabfbb3afb71e25cc5e4c0caee84", null ],
+    [ "SetAtSquare", "class_figure_interact.html#a12b7ccbbe02112ea23094c20e5ac8434", null ],
+    [ "Setup", "class_figure_interact.html#a0bd4684471b7f3e79df3529c27506105", null ],
+    [ "TakeDamage", "class_figure_interact.html#a59e95827880239e562f6f83a98b5c144", null ],
+    [ "createdMove", "class_figure_interact.html#a60f0c1cbb00b88f63d4468f0e61baee4", null ],
+    [ "currentShield", "class_figure_interact.html#a23ef2b72e1cc265f1e13b911759209f4", null ],
+    [ "damageText", "class_figure_interact.html#a888e88b966d4d4a0355f55ee12fe006e", null ],
+    [ "figureInfo", "class_figure_interact.html#a5d11549cedd1d007cf743847445997f4", null ],
+    [ "findedSquare", "class_figure_interact.html#aba338dd1cbcf21c001a26c3a9c036efa", null ],
+    [ "forward", "class_figure_interact.html#a2de792d6f441d830e88c34386b85bc5f", null ],
+    [ "mark", "class_figure_interact.html#abcc696fe60cf6bcbf38372ba22f7464d", null ],
+    [ "modelMesh", "class_figure_interact.html#ae5a01f1f689cd1b003fad2909db70854", null ],
+    [ "playerId", "class_figure_interact.html#a9d16682b6e6a6509bbb11d1bcaeb53a8", null ],
+    [ "shieldText", "class_figure_interact.html#abd91161f7edf15e90db4a143d9378f71", null ],
+    [ "CurrentShield", "class_figure_interact.html#ae84ccaa9f7ff653c14906e8774271f47", null ],
+    [ "currentSquare", "class_figure_interact.html#af6b8c1539becbb7dc2551b3a44fb866e", null ]
+];

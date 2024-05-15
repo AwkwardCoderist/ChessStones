@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['fieldsquares_0',['FieldSquares',['../class_game_field_manager.html#acf238849afdd7e61a432c88d8c06252d',1,'GameFieldManager']]],
+  ['figureinfo_1',['figureInfo',['../class_figure_interact.html#a5d11549cedd1d007cf743847445997f4',1,'FigureInteract']]],
+  ['figureinfo_5fso_2',['FigureInfo_SO',['../class_figure_info___s_o.html',1,'']]],
+  ['figureinfo_5fso_2ecs_3',['FigureInfo_SO.cs',['../_figure_info___s_o_8cs.html',1,'']]],
+  ['figureinteract_4',['FigureInteract',['../class_figure_interact.html',1,'']]],
+  ['figureinteract_2ecs_5',['FigureInteract.cs',['../_figure_interact_8cs.html',1,'']]],
+  ['figureplacement_5fso_6',['FigurePlacement_SO',['../class_figure_placement___s_o.html',1,'']]],
+  ['figureplacement_5fso_2ecs_7',['FigurePlacement_SO.cs',['../_figure_placement___s_o_8cs.html',1,'']]],
+  ['figureplacementinfo_8',['FigurePlacementInfo',['../struct_figure_placement_info.html',1,'']]],
+  ['figurerole_9',['figureRole',['../struct_figure_placement_info.html#addd000e94e185cc9520d9c404db4ff1d',1,'FigurePlacementInfo']]],
+  ['figurerole_10',['FigureRole',['../_game_field_manager_8cs.html#ae97493316f1ca5a3dc0f6b4a2dd4fe64',1,'GameFieldManager.cs']]],
+  ['figurerolepack_11',['FigureRolePack',['../struct_figure_selector_1_1_figure_role_pack.html',1,'FigureSelector']]],
+  ['figures_12',['figures',['../struct_figure_selector_1_1_figure_role_pack.html#a0a7d83a37267e39fff634fc74c8d16df',1,'FigureSelector::FigureRolePack']]],
+  ['figureselector_13',['FigureSelector',['../class_figure_selector.html',1,'']]],
+  ['figureselector_2ecs_14',['FigureSelector.cs',['../_figure_selector_8cs.html',1,'']]],
+  ['figuresids_15',['figuresIds',['../class_figure_selector.html#a453a4b0ca48835ae8fb6d60dc34d964b',1,'FigureSelector']]],
+  ['figuresplacement_16',['figuresPlacement',['../class_figure_placement___s_o.html#a88f8431ac3cf487e843b84a453302a73',1,'FigurePlacement_SO']]],
+  ['figureteaminfo_17',['FigureTeamInfo',['../struct_figure_team_info.html',1,'']]],
+  ['findedsquare_18',['findedSquare',['../class_figure_interact.html#aba338dd1cbcf21c001a26c3a9c036efa',1,'FigureInteract']]],
+  ['forward_19',['forward',['../class_figure_interact.html#a2de792d6f441d830e88c34386b85bc5f',1,'FigureInteract']]]
+];
