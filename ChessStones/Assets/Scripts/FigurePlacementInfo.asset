@@ -14,68 +14,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figuresPlacement:
   - placements:
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 0, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 1, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 2, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 3, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 4, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 5, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 6, y: 1}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 7, y: 1}
-    - figurePrefab: {fileID: 1580334486094837816, guid: cb06fec32cdd13a4b992c4d9b01a04e5, type: 3}
+    - figureRole: 3
       startPosition: {x: 0, y: 0}
-    - figurePrefab: {fileID: 6579787255967968629, guid: 3d2acda4a5d1042409812be69b8a3f5c, type: 3}
+    - figureRole: 1
       startPosition: {x: 1, y: 0}
-    - figurePrefab: {fileID: 7344935016470663859, guid: 9c87dc1f3f9742f40a5c09e8163eb0ea, type: 3}
+    - figureRole: 2
       startPosition: {x: 2, y: 0}
-    - figurePrefab: {fileID: 8228445202323003385, guid: 779bf1b6b20b3344ea50be69fad22f71, type: 3}
+    - figureRole: 4
       startPosition: {x: 3, y: 0}
-    - figurePrefab: {fileID: 947209202848176964, guid: 6b82e5684201c144eb7e0eff461cd4dc, type: 3}
+    - figureRole: 5
       startPosition: {x: 4, y: 0}
-    - figurePrefab: {fileID: 7344935016470663859, guid: 9c87dc1f3f9742f40a5c09e8163eb0ea, type: 3}
+    - figureRole: 2
       startPosition: {x: 5, y: 0}
-    - figurePrefab: {fileID: 6579787255967968629, guid: 3d2acda4a5d1042409812be69b8a3f5c, type: 3}
+    - figureRole: 1
       startPosition: {x: 6, y: 0}
-    - figurePrefab: {fileID: 1580334486094837816, guid: cb06fec32cdd13a4b992c4d9b01a04e5, type: 3}
+    - figureRole: 3
       startPosition: {x: 7, y: 0}
   - placements:
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 0, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 1, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 2, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 3, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 4, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 5, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 6, y: 6}
-    - figurePrefab: {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
+    - figureRole: 0
       startPosition: {x: 7, y: 6}
-    - figurePrefab: {fileID: 1580334486094837816, guid: cb06fec32cdd13a4b992c4d9b01a04e5, type: 3}
+    - figureRole: 0
       startPosition: {x: 0, y: 7}
-    - figurePrefab: {fileID: 6579787255967968629, guid: 3d2acda4a5d1042409812be69b8a3f5c, type: 3}
+    - figureRole: 0
       startPosition: {x: 1, y: 7}
-    - figurePrefab: {fileID: 7344935016470663859, guid: 9c87dc1f3f9742f40a5c09e8163eb0ea, type: 3}
+    - figureRole: 0
       startPosition: {x: 2, y: 7}
-    - figurePrefab: {fileID: 8228445202323003385, guid: 779bf1b6b20b3344ea50be69fad22f71, type: 3}
+    - figureRole: 0
       startPosition: {x: 3, y: 7}
-    - figurePrefab: {fileID: 947209202848176964, guid: 6b82e5684201c144eb7e0eff461cd4dc, type: 3}
+    - figureRole: 0
       startPosition: {x: 4, y: 7}
-    - figurePrefab: {fileID: 7344935016470663859, guid: 9c87dc1f3f9742f40a5c09e8163eb0ea, type: 3}
+    - figureRole: 0
       startPosition: {x: 5, y: 7}
-    - figurePrefab: {fileID: 6579787255967968629, guid: 3d2acda4a5d1042409812be69b8a3f5c, type: 3}
+    - figureRole: 0
       startPosition: {x: 6, y: 7}
-    - figurePrefab: {fileID: 1580334486094837816, guid: cb06fec32cdd13a4b992c4d9b01a04e5, type: 3}
+    - figureRole: 0
       startPosition: {x: 7, y: 7}

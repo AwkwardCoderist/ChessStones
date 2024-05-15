@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
   blackColor: {r: 0, g: 0, b: 0, a: 1}
+  avaliableColor: {r: 0.5199359, g: 0.7637977, b: 0.8679245, a: 1}
   m_Renderer: {fileID: 8990867912402122017}
   gizmosYOffset: 0.1
   hoverMark: {fileID: 8859871482452342850}

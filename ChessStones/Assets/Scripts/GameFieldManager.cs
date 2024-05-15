@@ -12,8 +12,18 @@ public struct FigureTeamInfo
 [System.Serializable]
 public struct FigurePlacementInfo
 {
-    public FigureInteract figurePrefab;
+    public FigureRole figureRole;
     public Vector2 startPosition;
+}
+
+public enum FigureRole
+{
+    Pawn,
+    Knight,
+    Bishop,
+    Rook,
+    Queen,
+    King
 }
 
 public class GameFieldManager : MonoBehaviour
@@ -22,6 +32,7 @@ public class GameFieldManager : MonoBehaviour
     [SerializeField] private Vector3 spawnOffset;
     [SerializeField] private GameFieldSquare GameFieldSquarePrefab;
     [SerializeField] private FigurePlacement_SO figuresPlacements;
+    [SerializeField] private FigureSelector figureSelector;
 
     private List<List<GameFieldSquare>> fieldSquares = new List<List<GameFieldSquare>>();
 
@@ -32,9 +43,10 @@ public class GameFieldManager : MonoBehaviour
 
     public List<List<GameFieldSquare>> FieldSquares { get => fieldSquares; }
 
-    private void Start()
+    [ContextMenu("StartGame")]
+    public void StartGame()
     {
-        if(fieldSquares.Count == 0) SpawnBoard();
+        if (fieldSquares.Count == 0) SpawnBoard();
         PlaceFigures();
     }
 
@@ -54,7 +66,7 @@ public class GameFieldManager : MonoBehaviour
             {
                 GameFieldSquare square = Instantiate(GameFieldSquarePrefab, transform);
                 square.transform.localPosition = _spawnOffset + Vector3.up * Random.value * spawnOffset.y;
-                square.Setup(_white);
+                square.Setup(_white, new Vector2(i, k));
 
                 newRow.Add(square);
 
@@ -99,7 +111,7 @@ public class GameFieldManager : MonoBehaviour
 
     }
 
-    private GameFieldSquare GetSquare(int x, int y)
+    public GameFieldSquare GetSquare(int x, int y)
     {
         if (x < fieldSquares.Count && x >= 0)
         {
@@ -147,7 +159,9 @@ public class GameFieldManager : MonoBehaviour
             for (int k = 0; k < figuresPlacements.figuresPlacement[i].placements.Count; k++)
             {
                 spawnPos = figuresPlacements.figuresPlacement[i].placements[k].startPosition;
-                figure = Instantiate(figuresPlacements.figuresPlacement[i].placements[k].figurePrefab);
+                FigureRole role = figuresPlacements.figuresPlacement[i].placements[k].figureRole;
+                FigureInteract spawnFigure = figureSelector.figuresIds[(int)role].figures[figureSelector.teamsSelectedFigures[i][(int)role]];
+                figure = Instantiate(spawnFigure);
                 figure.Setup(i);
                 playersFigures[i].Add(figure);
 

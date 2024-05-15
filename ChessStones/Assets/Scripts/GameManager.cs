@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private GameFieldManager field;
     [SerializeField] private TMPro.TMP_Text currentPlayerText;
 
     private FigureInteract selectedFigure;
@@ -38,33 +39,78 @@ public class GameManager : MonoBehaviour
 
         selectedFigure = figure;
         selectedFigure.SelectFigure();
+
+        ShowAvaliableMoves();
+        
     }
 
     public void DeselectFigure()
     {
         if (selectedFigure != null) selectedFigure.DeselectFigure();
         selectedFigure = null;
+
+        HideAvaliableMoves();
     }
+
+    private List<AvaliableMove> avaliableMoves = new List<AvaliableMove>();
+
+    private void ShowAvaliableMoves()
+    {
+        if(avaliableMoves.Count > 0) HideAvaliableMoves();
+
+        if (selectedFigure != null)
+        {
+            avaliableMoves = selectedFigure.GetDefaultMoves(field);
+        }
+
+        foreach (AvaliableMove move in avaliableMoves)
+        {
+            if(move != null) move.Square.ShowAvaliable();
+        }
+    }
+
+    private void HideAvaliableMoves()
+    {
+        foreach (AvaliableMove move in avaliableMoves)
+        {
+            move.Square.HideAvaliable();
+        }
+
+        avaliableMoves.Clear();
+
+    }
+
+    private AvaliableMove findedMove;
 
     public void SelectSquare(GameFieldSquare square)
     {
         if (selectedFigure != null)
         {
-            if(square.currentFigure != null) 
-                selectedFigure.Attack(square.currentFigure);
+
+            findedMove = avaliableMoves.Find(x => x.Square == square);
+
+            if (square.currentFigure == selectedFigure || findedMove == null)
+            {
+                DeselectFigure();
+                return;
+            }
+
+            foreach (FigureInteract figure in findedMove.damageFigures)
+            {
+                selectedFigure.Attack(figure);
+            }
 
 
             if(square.currentFigure == null)
                 selectedFigure.SetAtSquare(square);
 
 
-            DeselectFigure();
-            PassTurn();
         }
     }
 
     public void PassTurn()
     {
+        DeselectFigure();
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;
 
