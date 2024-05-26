@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 812c0a7f684bf67408bbff4419d2b357, type: 3}
-  m_Name: FigurePlacementInfo
+  m_Name: Default_FigurePlacementInfo
   m_EditorClassIdentifier: 
   figuresPlacement:
   - placements:
@@ -63,19 +63,19 @@ MonoBehaviour:
       startPosition: {x: 6, y: 6}
     - figureRole: 0
       startPosition: {x: 7, y: 6}
-    - figureRole: 0
+    - figureRole: 3
       startPosition: {x: 0, y: 7}
-    - figureRole: 0
+    - figureRole: 1
       startPosition: {x: 1, y: 7}
-    - figureRole: 0
+    - figureRole: 2
       startPosition: {x: 2, y: 7}
-    - figureRole: 0
+    - figureRole: 5
       startPosition: {x: 3, y: 7}
-    - figureRole: 0
+    - figureRole: 4
       startPosition: {x: 4, y: 7}
-    - figureRole: 0
+    - figureRole: 2
       startPosition: {x: 5, y: 7}
-    - figureRole: 0
+    - figureRole: 1
       startPosition: {x: 6, y: 7}
-    - figureRole: 0
+    - figureRole: 3
       startPosition: {x: 7, y: 7}

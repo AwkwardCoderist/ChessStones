@@ -20,7 +20,8 @@ public class FigureSelector : MonoBehaviour
 
     public List<List<int>> teamsSelectedFigures = new List<List<int>>();
 
-
+    public List<int> debug_player1selectedIndexes;
+    public List<int> debug_player2selectedIndexes;
 
     private void Start()
     {
@@ -41,6 +42,8 @@ public class FigureSelector : MonoBehaviour
             player1selectors[i].SetValueWithoutNotify(0);
 
             teamsSelectedFigures[0].Add(0);
+            
+            if (i < debug_player1selectedIndexes.Count) UpdateFigure(0, i, debug_player1selectedIndexes[i]);
         }
 
         for (int i = 0; i < 6; i++)
@@ -57,11 +60,18 @@ public class FigureSelector : MonoBehaviour
             player1selectors[i].SetValueWithoutNotify(0);
 
             teamsSelectedFigures[1].Add(0);
+            
+            if(i < debug_player2selectedIndexes.Count) UpdateFigure(1, i, debug_player2selectedIndexes[i]);
         }
+
+        
+
     }
 
     private void UpdateFigure(int playerId, int figureRole, int newFigureId)
     {
+        if (figureRole >= 6) return;
+
         teamsSelectedFigures[playerId][figureRole] = newFigureId;
     }
 }

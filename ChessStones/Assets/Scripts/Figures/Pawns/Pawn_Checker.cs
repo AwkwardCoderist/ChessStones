@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//at current state checker dont make combos
+
 public class Pawn_Checker : FigureInteract
 {
     private int x;
@@ -21,7 +23,6 @@ public class Pawn_Checker : FigureInteract
             y = (int)currentSquare.Position.y - ySide;
 
             findedSquare = field.GetSquare(x * forward, y);
-            Debug.Log(findedSquare);
 
             if (findedSquare != null)
             {
@@ -31,20 +32,31 @@ public class Pawn_Checker : FigureInteract
                     {
                         enemy = findedSquare.currentFigure;
 
-                        findedSquare = field.GetSquare(x * 2 * forward, y * 2);
+                        Vector2 afterEnemyPos = findedSquare.Position - currentSquare.Position;
 
+                        findedSquare = field.GetSquare(
+                            (int)currentSquare.Position.x + (int)afterEnemyPos.x * 2 * forward, 
+                            (int)currentSquare.Position.y + (int)afterEnemyPos.y * 2);
+
+                        Debug.Log($"EnemyDir: {(int)afterEnemyPos.x * 2 * forward} {(int)afterEnemyPos.y * 2}");
                         if (findedSquare != null)
                         {
                             createdMove = new AvaliableMove(findedSquare);
                             createdMove.damageFigures.Add(enemy);
                         }
                     }
+                    else
+                    {
+                        continue;
+                    }
+
                 }
                 else
                 {
                     createdMove = new AvaliableMove(findedSquare);
                 }
 
+                //Debug.Log($"Adding: {createdMove}", findedSquare);
                 result.Add(createdMove);
             }
 

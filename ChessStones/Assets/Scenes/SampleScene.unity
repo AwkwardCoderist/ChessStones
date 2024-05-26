@@ -4041,7 +4041,7 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 1860092325}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 1
   m_Options:
     m_Options:
     - m_Text: Option A
@@ -14636,7 +14636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option A
+  m_text: Option B
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15516,6 +15516,7 @@ GameObject:
   - component: {fileID: 1781215166}
   - component: {fileID: 1781215168}
   - component: {fileID: 1781215169}
+  - component: {fileID: 1781215170}
   m_Layer: 0
   m_Name: GameGrid
   m_TagString: Untagged
@@ -15601,6 +15602,7 @@ MonoBehaviour:
     figures:
     - {fileID: 8399423548228577633, guid: 4e7474cb56e8d794f9ec7b7f3d79176b, type: 3}
     - {fileID: 3040634117535340898, guid: 4731f0e8a99a682498f4831da9711287, type: 3}
+    - {fileID: 7060831808532950814, guid: d2c8eb619ee496c458249efcbafee745, type: 3}
   - name: Knight
     figures:
     - {fileID: 6579787255967968629, guid: 3d2acda4a5d1042409812be69b8a3f5c, type: 3}
@@ -15616,6 +15618,21 @@ MonoBehaviour:
   - name: King
     figures:
     - {fileID: 947209202848176964, guid: 6b82e5684201c144eb7e0eff461cd4dc, type: 3}
+  debug_player1selectedIndexes: 01000000
+  debug_player2selectedIndexes: 
+--- !u!114 &1781215170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781215165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005985bc3041c0f4da3959f9ec3f72d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadScenePress: 3
 --- !u!1 &1797809245
 GameObject:
   m_ObjectHideFlags: 0

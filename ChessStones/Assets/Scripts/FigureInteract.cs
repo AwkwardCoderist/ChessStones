@@ -125,6 +125,11 @@ public class FigureInteract : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public virtual void GlobalEndOfTurn()
+    {
+
+    }
+
     protected virtual void OnMouseDown()
     {
         if (GameManager.Instance.CurrentPlayerId != playerId) return;
