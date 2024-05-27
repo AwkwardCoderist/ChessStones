@@ -42,6 +42,7 @@ public class GameFieldManager : MonoBehaviour
     private bool _white = true;
 
     public List<List<GameFieldSquare>> FieldSquares { get => fieldSquares; }
+    public List<List<FigureInteract>> PlayersFigures { get => playersFigures; }
 
     [ContextMenu("StartGame")]
     public void StartGame()

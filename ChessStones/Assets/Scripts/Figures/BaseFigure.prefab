@@ -375,6 +375,9 @@ MonoBehaviour:
   damageText: {fileID: 923117038127459685}
   shieldText: {fileID: 3557998394648961958}
   playerId: 0
+  visual: {fileID: 0}
+  uiCanvas: {fileID: 1256437641256952809}
+  interactCollider: {fileID: 6539846191949879000}
 --- !u!65 &6539846191949879000
 BoxCollider:
   m_ObjectHideFlags: 0

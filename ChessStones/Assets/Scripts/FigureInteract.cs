@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 [System.Serializable]
 public class AvaliableMove
@@ -23,9 +24,16 @@ public class FigureInteract : MonoBehaviour
     [SerializeField] protected TMPro.TMP_Text damageText;
     [SerializeField] protected TMPro.TMP_Text shieldText;
 
+
     public int playerId;
     protected int currentShield;
     protected int forward = 1;
+
+    [Header("Death Disable Components")]
+    [SerializeField] private GameObject visual;
+    [SerializeField] private GameObject uiCanvas;
+    [SerializeField] private Collider interactCollider;
+
 
     public GameFieldSquare currentSquare { get; set; }
     public int CurrentShield
@@ -97,8 +105,13 @@ public class FigureInteract : MonoBehaviour
 
         transform.position = square.transform.position;
         currentSquare.currentFigure = this;
-        GameManager.Instance.PassTurn();
 
+    }
+
+    public virtual void Move(GameFieldSquare square)
+    {
+        SetAtSquare(square);
+        GameManager.Instance.PassTurn();
     }
 
     public virtual void Attack(FigureInteract enemy)
@@ -122,7 +135,14 @@ public class FigureInteract : MonoBehaviour
         currentShield = 0;
         currentSquare.currentFigure = null;
         currentSquare = null;
-        gameObject.SetActive(false);
+
+        if(visual) 
+            visual.SetActive(false);
+        else
+            gameObject.SetActive(false);
+
+        if(uiCanvas) uiCanvas.SetActive(false);
+        if(interactCollider) interactCollider.enabled = false;
     }
 
     public virtual void GlobalEndOfTurn()

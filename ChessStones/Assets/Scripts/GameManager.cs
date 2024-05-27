@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 
 
             if(square.currentFigure == null)
-                selectedFigure.SetAtSquare(square);
+                selectedFigure.Move(square);
 
 
         }
@@ -113,6 +113,14 @@ public class GameManager : MonoBehaviour
         DeselectFigure();
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;
+
+        foreach (List<FigureInteract> figures in field.PlayersFigures)
+        {
+            foreach (FigureInteract figure in figures)
+            {
+                figure.GlobalEndOfTurn();
+            }
+        }
 
 
     }

@@ -4,28 +4,80 @@ using UnityEngine;
 
 public class Pawn_Bomber : FigureInteract
 {
-    private List<FigureInteract> enemyInRadius;
+    public int blowDamage = 10;
+
+    public ParticleSystem blowEffect;
+
+    private List<FigureInteract> enemyInRadius = new List<FigureInteract>();
+
+    private FigureInteract enteredRadiusEnemy;
+
     public override void GlobalEndOfTurn()
     {
         base.GlobalEndOfTurn();
 
+        foreach (GameFieldSquare square in currentSquare.neighbourSquares)
+        {
+            if (square != null)
+            {
+                if (square.currentFigure != null)
+                {
+                    if (square.currentFigure.playerId != playerId)
+                    {
+                        if (!enemyInRadius.Contains(square.currentFigure))
+                        {
+                            enteredRadiusEnemy = square.currentFigure;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
+        if(enteredRadiusEnemy != null)
+        {
+            BlowAttack(enteredRadiusEnemy);
+            enteredRadiusEnemy = null;
+        }
 
     }
 
-    public override void SetAtSquare(GameFieldSquare square)
+    private void BlowAttack(FigureInteract enemy)
     {
-        if (currentSquare != null) currentSquare.currentFigure = null;
-        currentSquare = square;
+        enemy.TakeDamage(blowDamage);
+        TakeDamage(blowDamage);
+        blowEffect.Play();
+    }
 
-        transform.position = square.transform.position;
-        currentSquare.currentFigure = this;
-        SaveFiguresInRadius();
+    public override void Move(GameFieldSquare square)
+    {
+        SetAtSquare(square);
+
+        SaveFiguresInRadius(square);
+
         GameManager.Instance.PassTurn();
     }
 
-    private void SaveFiguresInRadius()
+
+    private void SaveFiguresInRadius(GameFieldSquare currentSquare)
     {
+        //radius is a 8 squares around figure
+
+        enemyInRadius.Clear();
+
+        foreach(GameFieldSquare square in currentSquare.neighbourSquares)
+        {
+            if (square != null)
+            {
+                if(square.currentFigure != null)
+                {
+                    if(square.currentFigure.playerId != playerId)
+                    {
+                        enemyInRadius.Add(square.currentFigure);
+                    }
+                }
+            }
+        }
 
     }
 }
