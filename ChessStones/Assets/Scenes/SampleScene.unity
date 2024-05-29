@@ -15518,7 +15518,7 @@ GameObject:
   - component: {fileID: 1781215169}
   - component: {fileID: 1781215170}
   m_Layer: 0
-  m_Name: GameGrid
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15612,13 +15612,14 @@ MonoBehaviour:
   - name: Rook
     figures:
     - {fileID: 1580334486094837816, guid: cb06fec32cdd13a4b992c4d9b01a04e5, type: 3}
+    - {fileID: 2576893471296015783, guid: ca2e9af93c891f943aa53d6b5247af3c, type: 3}
   - name: Queen
     figures:
     - {fileID: 8228445202323003385, guid: 779bf1b6b20b3344ea50be69fad22f71, type: 3}
   - name: King
     figures:
     - {fileID: 947209202848176964, guid: 6b82e5684201c144eb7e0eff461cd4dc, type: 3}
-  debug_player1selectedIndexes: 02000000
+  debug_player1selectedIndexes: 02000000000000000000000001000000
   debug_player2selectedIndexes: 
 --- !u!114 &1781215170
 MonoBehaviour:

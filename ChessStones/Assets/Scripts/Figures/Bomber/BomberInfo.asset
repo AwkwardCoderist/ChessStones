@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BomberInfo
   m_EditorClassIdentifier: 
   Name: "\u0428\u0430\u0448\u043A\u0430"
-  Damage: 1
-  Shield: 3
+  Damage: 0
+  Shield: 1
   teamMats:
   - {fileID: 5422848464680618109, guid: a2126e0fb2bc15b49b3f99581c0b4b83, type: 3}
   - {fileID: 5422848464680618109, guid: a2126e0fb2bc15b49b3f99581c0b4b83, type: 3}

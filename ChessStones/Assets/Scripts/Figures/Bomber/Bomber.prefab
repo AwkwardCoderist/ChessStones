@@ -5022,6 +5022,8 @@ MonoBehaviour:
   damageText: {fileID: 5235981802965404907}
   shieldText: {fileID: 8432690183491355176}
   playerId: 0
+  selectOffset: {x: -0.275, y: 1.762, z: 0.349}
+  unselectOffset: {x: -0.275, y: 0.762, z: 0.349}
   visual: {fileID: 7798509510253102101}
   uiCanvas: {fileID: 6127605633795998311}
   interactCollider: {fileID: 2207978559711360854}

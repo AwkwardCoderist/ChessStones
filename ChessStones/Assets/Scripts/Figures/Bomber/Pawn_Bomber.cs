@@ -16,6 +16,10 @@ public class Pawn_Bomber : FigureInteract
     {
         base.GlobalEndOfTurn();
 
+        if (currentSquare == null) return;
+
+        enteredRadiusEnemy = null;
+
         foreach (GameFieldSquare square in currentSquare.neighbourSquares)
         {
             if (square != null)

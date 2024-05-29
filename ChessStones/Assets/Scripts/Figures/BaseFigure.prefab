@@ -371,11 +371,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 883f262c3c298544190908f356ae6dce, type: 2}
   mark: {fileID: 911281231467398305}
-  modelMesh: {fileID: 845280256116900976}
+  visual: {fileID: 4201056567980044903}
   damageText: {fileID: 923117038127459685}
   shieldText: {fileID: 3557998394648961958}
   playerId: 0
-  visual: {fileID: 0}
+  selectOffset: {x: 0, y: 1, z: 0}
+  unselectOffset: {x: 0, y: 0, z: 0}
   uiCanvas: {fileID: 1256437641256952809}
   interactCollider: {fileID: 6539846191949879000}
 --- !u!65 &6539846191949879000

@@ -20,7 +20,7 @@ public class FigureInteract : MonoBehaviour
 {
     public FigureInfo_SO figureInfo;
     [SerializeField] protected GameObject mark;
-    [SerializeField] protected MeshFilter modelMesh;
+    [SerializeField] protected GameObject visual;
     [SerializeField] protected TMPro.TMP_Text damageText;
     [SerializeField] protected TMPro.TMP_Text shieldText;
 
@@ -29,8 +29,11 @@ public class FigureInteract : MonoBehaviour
     protected int currentShield;
     protected int forward = 1;
 
+    [Header("Select offset")]
+    [SerializeField] private Vector3 selectOffset;
+    [SerializeField] private Vector3 unselectOffset;
+
     [Header("Death Disable Components")]
-    [SerializeField] private GameObject visual;
     [SerializeField] private GameObject uiCanvas;
     [SerializeField] private Collider interactCollider;
 
@@ -57,18 +60,21 @@ public class FigureInteract : MonoBehaviour
         playerId = teamId;
         if (playerId == 1) forward = -1;
 
-        modelMesh.mesh = figureInfo.teamMeshes[playerId];
+        if (visual.TryGetComponent(out MeshFilter filter))
+        {
+            filter.mesh = figureInfo.teamMeshes[playerId];
+        }
 
     }
 
     public virtual void SelectFigure()
     {
-        modelMesh.transform.localPosition = Vector3.up;
+        visual.transform.localPosition = selectOffset;
     }
 
     public virtual void DeselectFigure()
     {
-        modelMesh.transform.localPosition = Vector3.zero;
+        visual.transform.localPosition = unselectOffset;
     }
 
     protected GameFieldSquare findedSquare;
@@ -81,11 +87,19 @@ public class FigureInteract : MonoBehaviour
         
         foreach(Vector2 pos in figureInfo.certainSquareMoves)
         {
-            Debug.Log($"{(int)(currentSquare.Position.y + pos.y * forward)}   {(int)(currentSquare.Position.x + pos.x)}");
+            //Debug.Log($"{(int)(currentSquare.Position.y + pos.y * forward)}   {(int)(currentSquare.Position.x + pos.x)}");
             findedSquare = field.GetSquare((int)(currentSquare.Position.x + pos.y * forward), (int)(currentSquare.Position.y + pos.x));
             
             if (findedSquare != null)
             {
+                if (findedSquare.currentFigure != null)
+                {
+                    if(findedSquare.currentFigure.playerId == playerId)
+                    {
+                        continue;
+                    }
+                }
+
                 createdMove = new AvaliableMove(findedSquare);
                 if(findedSquare.currentFigure != null) createdMove.damageFigures.Add(findedSquare.currentFigure);
 

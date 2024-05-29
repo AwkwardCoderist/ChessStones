@@ -101,16 +101,17 @@ public class GameManager : MonoBehaviour
             }
 
 
+            Debug.Log($"{square.currentFigure} {selectedFigure}");
             if(square.currentFigure == null)
                 selectedFigure.Move(square);
 
+            DeselectFigure();
 
         }
     }
 
     public void PassTurn()
     {
-        DeselectFigure();
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;
 
