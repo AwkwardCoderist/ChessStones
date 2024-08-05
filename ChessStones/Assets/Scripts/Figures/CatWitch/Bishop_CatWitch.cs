@@ -123,6 +123,7 @@ public class Bishop_CatWitch : FigureInteract
         {
             _passedTurns = 0;
             _controlEffect.Stop();
+            GameManager.Instance.ControllerFigure = null;
         }
 
         if (_passedTurns < _delayToControl)

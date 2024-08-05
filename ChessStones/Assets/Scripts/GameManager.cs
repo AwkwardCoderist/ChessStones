@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _rotateAngle;
     [SerializeField] private AnimationCurve _rotateCurve;
     private float _elapsedRotateTime;
+    private Quaternion _startRotation;
+    private Quaternion _rotateTarget;
 
     private void Awake()
     {
@@ -44,9 +46,21 @@ public class GameManager : MonoBehaviour
             Destroy(this);
     }
 
+    private void Start()
+    {
+        _startRotation = _rotateCenter.rotation;
+        _rotateTarget = _rotateCenter.rotation;
+    }
+
+    private float t;
     private void Update()
     {
-
+        if (_elapsedRotateTime < _rotateDuration)
+        {
+            t = _rotateCurve.Evaluate(_elapsedRotateTime / _rotateDuration);
+            _rotateCenter.rotation = Quaternion.Lerp(_startRotation, _rotateTarget, t);
+            _elapsedRotateTime += Time.deltaTime;
+        }
     }
 
     public void SelectFigure(FigureInteract figure)
@@ -147,9 +161,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool _side;
     public void PassTurn()
     {
         if (selectedFigure != null) DeselectFigure();
+
+
+        _startRotation = _rotateCenter.rotation * Quaternion.AngleAxis(-0.01f, Vector3.up);
+        _rotateTarget *= Quaternion.AngleAxis(_rotateAngle, Vector3.up);
+        _elapsedRotateTime = 0;
 
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;

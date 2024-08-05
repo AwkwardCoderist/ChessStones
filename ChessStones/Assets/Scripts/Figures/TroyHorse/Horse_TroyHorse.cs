@@ -192,6 +192,7 @@ public class Horse_TroyHorse : FigureInteract
 
             insideFigures.RemoveAt(selectedInsideIndex);
             UpdateInsideFigures();
+            GameManager.Instance.ChangeAvaliableMoves(GetDefaultMoves());
         }
         else
         {
@@ -199,6 +200,7 @@ public class Horse_TroyHorse : FigureInteract
             interactedWithFigure.Clear();
             _performedMove = true;
         }
+
     }
 
     public override void EndOfActions()

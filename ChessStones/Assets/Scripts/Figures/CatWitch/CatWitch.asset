@@ -16,8 +16,8 @@ MonoBehaviour:
   Damage: 1
   Shield: 4
   teamMats:
-  - {fileID: 2100000, guid: ea18e8d2523d9a74baecd9f8dbb1904c, type: 2}
   - {fileID: 2100000, guid: 9de255f6a33f1a941953e99176ec97f0, type: 2}
+  - {fileID: 2100000, guid: ea18e8d2523d9a74baecd9f8dbb1904c, type: 2}
   changeTeamMesh: 0
   teamMeshes: []
   certainSquareMoves:

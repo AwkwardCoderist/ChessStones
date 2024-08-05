@@ -15731,6 +15731,33 @@ MonoBehaviour:
   field: {fileID: 1781215166}
   currentPlayerText: {fileID: 1862889131}
   amountOfTeams: 2
+  _rotateCenter: {fileID: 1235985405}
+  _rotateDuration: 1
+  _rotateAngle: 180
+  _rotateCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   avaliableMoves: []
 --- !u!114 &1781215169
 MonoBehaviour:
@@ -15788,7 +15815,7 @@ MonoBehaviour:
     - {fileID: 947209202848176964, guid: 6b82e5684201c144eb7e0eff461cd4dc, type: 3}
     - {fileID: 8152584627568492646, guid: 3548041b7ceef2446bf500d21b512d8d, type: 3}
   debug_player1selectedIndexes: 030000000100000003000000010000000100000001000000
-  debug_player2selectedIndexes: 000000000100000003000000000000000100000001000000
+  debug_player2selectedIndexes: 000000000100000002000000000000000100000001000000
 --- !u!114 &1781215170
 MonoBehaviour:
   m_ObjectHideFlags: 0

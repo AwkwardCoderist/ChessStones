@@ -33,7 +33,7 @@ public class Bishop_CookCleric : FigureInteract
 
         foreach (GameFieldSquare square in _currentSquare.neighbourSquares)
         {
-            if (square?.currentFigure.playerId == playerId)
+            if (square?.currentFigure?.playerId == playerId)
             {
                 if (!_alreadyHealed.Contains(square.currentFigure))
                 {
