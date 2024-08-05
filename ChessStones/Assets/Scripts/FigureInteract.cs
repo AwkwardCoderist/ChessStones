@@ -8,11 +8,17 @@ public class AvaliableMove
 {
     public GameFieldSquare Square;
     public List<FigureInteract> damageFigures;
+    public bool moveToSquare;
+
+    public List<string> flags;
 
     public AvaliableMove(GameFieldSquare findedSquare)
     {
         Square = findedSquare;
         damageFigures = new List<FigureInteract>();
+        moveToSquare = true;
+
+        flags = new List<string>();
     }
 }
 
@@ -20,14 +26,28 @@ public class FigureInteract : MonoBehaviour
 {
     public FigureInfo_SO figureInfo;
     [SerializeField] protected GameObject mark;
-    [SerializeField] protected GameObject visual;
+    [SerializeField] protected GameObject _visual;
     [SerializeField] protected TMPro.TMP_Text damageText;
     [SerializeField] protected TMPro.TMP_Text shieldText;
 
 
     public int playerId;
+    public FigureRole role;
     protected int currentShield;
     protected int forward = 1;
+
+    protected GameFieldManager _field;
+
+    protected bool _performedAttack;
+    protected bool _performedMove;
+
+    [Header("MeshRenderer parts")]
+    [SerializeField] protected List<MeshRenderer> teamMeshes;
+    [SerializeField] protected List<SkinnedMeshRenderer> teamSkinnedMeshes;
+    [SerializeField] protected List<MeshRenderer> enemyMeshes;
+    [SerializeField] protected List<SkinnedMeshRenderer> enemySkinnedMeshes;
+    [SerializeField] protected List<VisualMeshTeam> indexTeamMeshes;
+    [SerializeField] protected List<VisualMeshTeam> indexEnemyMeshes;
 
     [Header("Select offset")]
     [SerializeField] private Vector3 selectOffset;
@@ -38,7 +58,7 @@ public class FigureInteract : MonoBehaviour
     [SerializeField] private Collider interactCollider;
 
 
-    public GameFieldSquare currentSquare { get; set; }
+    public GameFieldSquare _currentSquare { get; set; }
     public int CurrentShield
     { 
         get => currentShield;
@@ -48,47 +68,154 @@ public class FigureInteract : MonoBehaviour
             shieldText.text = currentShield.ToString();
         }
     }
+    public GameObject Visual => _visual;
 
-    private void Start()
+
+    private Dictionary<string, int> AdditionalDamage = new Dictionary<string, int>();
+    private int _additionalDamage;
+    public void SetAdditionalDamage(string id, int damage)
+    {
+        if (!AdditionalDamage.TryAdd(id, damage))
+        {
+            AdditionalDamage[id] = damage;
+        }
+
+        _additionalDamage = 0;
+
+        foreach (int value in AdditionalDamage.Values)
+        {
+            _additionalDamage += value;
+        }
+        
+        damageText.text = (figureInfo.Damage + _additionalDamage).ToString();
+    }
+    public void RemoveAdditionalDamage(string id)
+    {
+        AdditionalDamage.Remove(id);
+
+        _additionalDamage = 0;
+
+        foreach (int value in AdditionalDamage.Values)
+        {
+            _additionalDamage += value;
+        }
+
+        damageText.text = (figureInfo.Damage + _additionalDamage).ToString();
+    }
+
+    protected virtual void Start()
     {
         CurrentShield = figureInfo.Shield;
         damageText.text = figureInfo.Damage.ToString();
+        uiCanvas.SetActive(false);
+
     }
 
-    public virtual void Setup(int teamId)
+    public virtual void Setup(GameFieldManager field, int teamId, FigureRole figureRole)
     {
+        _field = field;
         playerId = teamId;
-        if (playerId == 1) forward = -1;
+        role = figureRole;
 
-        if (visual.TryGetComponent(out MeshFilter filter))
+        if (playerId == 1)
         {
-            filter.mesh = figureInfo.teamMeshes[playerId];
+            forward = -1;
+            _visual.transform.localRotation = Quaternion.Euler(0, 180, 0) * _visual.transform.localRotation;
+        }
+
+
+        if (figureInfo.changeTeamMesh)
+        {
+            if (_visual.TryGetComponent(out MeshFilter filter))
+            {
+                Debug.Log($"{playerId} {figureInfo}");
+                filter.mesh = figureInfo.teamMeshes[playerId];
+            }
+        }
+
+        int enemyMatId = 0;
+
+        for (int i = 0; i < figureInfo.teamMats.Count; i++)
+        {
+            if (teamId != i)
+            {
+                enemyMatId = i;
+                break;
+            }
+        }//find enemy material
+
+
+        if (teamMeshes.Count > 0 || enemyMeshes.Count > 0)
+        {         
+
+            foreach (MeshRenderer mesh in teamMeshes)
+            {
+                mesh.material = figureInfo.teamMats[teamId];
+            }
+
+            foreach (MeshRenderer mesh in enemyMeshes)
+            {
+                mesh.material = figureInfo.teamMats[enemyMatId];
+            }
+
+            foreach (SkinnedMeshRenderer mesh in teamSkinnedMeshes)
+            {
+                mesh.material = figureInfo.teamMats[teamId];
+            }
+
+            foreach (SkinnedMeshRenderer mesh in enemySkinnedMeshes)
+            {
+                mesh.material = figureInfo.teamMats[enemyMatId];
+            }
+        }
+
+        Material[] mats;
+
+        for (int i = 0; i < 2; i++)
+        {
+            foreach (VisualMeshTeam mesh in i == 0 ? indexTeamMeshes : indexEnemyMeshes)
+            {
+                if (mesh.rend)
+                {
+                    mats = mesh.rend.materials;
+                    mats[mesh.matIndex] = figureInfo.teamMats[i == 0 ? teamId : enemyMatId];
+                    mesh.rend.materials = mats;
+                }
+                else if (mesh.skin)
+                {
+                    mats = mesh.skin.materials;
+                    mats[mesh.matIndex] = figureInfo.teamMats[i == 0 ? teamId : enemyMatId];
+                    mesh.skin.materials = mats;
+                }
+            }
         }
 
     }
 
     public virtual void SelectFigure()
     {
-        visual.transform.localPosition = selectOffset;
+        _visual.transform.localPosition = selectOffset;
     }
 
     public virtual void DeselectFigure()
     {
-        visual.transform.localPosition = unselectOffset;
+        _visual.transform.localPosition = unselectOffset;
+        mark?.SetActive(false);
     }
 
     protected GameFieldSquare findedSquare;
     protected AvaliableMove createdMove;
 
 
-    public virtual List<AvaliableMove> GetDefaultMoves(GameFieldManager field)
+    public virtual List<AvaliableMove> GetDefaultMoves()
     {
+
         List<AvaliableMove> result = new List<AvaliableMove>();
         
         foreach(Vector2 pos in figureInfo.certainSquareMoves)
         {
             //Debug.Log($"{(int)(currentSquare.Position.y + pos.y * forward)}   {(int)(currentSquare.Position.x + pos.x)}");
-            findedSquare = field.GetSquare((int)(currentSquare.Position.x + pos.y * forward), (int)(currentSquare.Position.y + pos.x));
+            findedSquare = _field.GetSquare((int)(_currentSquare.Position.x + pos.y * forward), (int)(_currentSquare.Position.y + pos.x));
             
             if (findedSquare != null)
             {
@@ -114,24 +241,27 @@ public class FigureInteract : MonoBehaviour
 
     public virtual void SetAtSquare(GameFieldSquare square)
     {
-        if (currentSquare != null) currentSquare.currentFigure = null;
-        currentSquare = square;
+        if (_currentSquare != null) _currentSquare.currentFigure = null;
+        _currentSquare = square;
 
         transform.position = square.transform.position;
-        currentSquare.currentFigure = this;
+        _currentSquare.currentFigure = this;
 
     }
 
-    public virtual void Move(GameFieldSquare square)
+    public virtual void Move(GameFieldSquare square, List<string> flags)
     {
         SetAtSquare(square);
-        GameManager.Instance.PassTurn();
     }
 
-    public virtual void Attack(FigureInteract enemy)
+    public virtual void Attack(FigureInteract enemy, List<string> flags)
     {
-        enemy.TakeDamage(figureInfo.Damage);
+        enemy.TakeDamage(figureInfo.Damage + _additionalDamage);
         TakeDamage(enemy.figureInfo.Damage);
+    }
+
+    public virtual void EndOfActions()
+    {
         GameManager.Instance.PassTurn();
     }
 
@@ -147,19 +277,21 @@ public class FigureInteract : MonoBehaviour
     public virtual void Death()
     {
         currentShield = 0;
-        currentSquare.currentFigure = null;
-        currentSquare = null;
+        _currentSquare.currentFigure = null;
+        _currentSquare = null;
+        Debug.Log("death of " + gameObject);
 
-        if(visual) 
-            visual.SetActive(false);
+        if(_visual) 
+            _visual.SetActive(false);
         else
             gameObject.SetActive(false);
 
-        if(uiCanvas) uiCanvas.SetActive(false);
+        mark?.SetActive(false);
+        if (uiCanvas) uiCanvas.SetActive(false);
         if(interactCollider) interactCollider.enabled = false;
     }
 
-    public virtual void GlobalEndOfTurn()
+    public virtual void OnGlobalEndOfTurn()
     {
 
     }
@@ -173,13 +305,13 @@ public class FigureInteract : MonoBehaviour
 
     protected virtual void OnMouseEnter()
     {
-        if (GameManager.Instance.CurrentPlayerId != playerId) return;
-
-        mark.SetActive(true);
+        if (GameManager.Instance.CurrentPlayerId == playerId) mark.SetActive(true);
+        uiCanvas.SetActive(true);
     }
 
     protected virtual void OnMouseExit()
     {
-        mark.SetActive(false);
+        if (GameManager.Instance.CurrentPlayerId == playerId) mark.SetActive(false);
+        uiCanvas.SetActive(false);
     }
 }

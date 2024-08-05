@@ -35,7 +35,7 @@ MonoBehaviour:
     - figureRole: 1
       startPosition: {x: 1, y: 0}
     - figureRole: 2
-      startPosition: {x: 2, y: 0}
+      startPosition: {x: 1, y: 3}
     - figureRole: 4
       startPosition: {x: 3, y: 0}
     - figureRole: 5

@@ -125,6 +125,11 @@ public class GameFieldManager : MonoBehaviour
         return null;
     }
 
+    public GameFieldSquare GetSquare(Vector3 pos)
+    {
+        return GetSquare((int)pos.x, (int)pos.y);
+    }
+
     [ContextMenu("ClearBoard")]
     public void ClearBoard()
     {
@@ -163,8 +168,8 @@ public class GameFieldManager : MonoBehaviour
                 FigureRole role = figuresPlacements.figuresPlacement[i].placements[k].figureRole;
                 FigureInteract spawnFigure = figureSelector.figuresIds[(int)role].figures[figureSelector.teamsSelectedFigures[i][(int)role]];
                 figure = Instantiate(spawnFigure);
-                figure.Setup(i);
                 playersFigures[i].Add(figure);
+                figure.Setup(this, i, role);
 
                 figure.SetAtSquare(fieldSquares[(int)spawnPos.y][(int)spawnPos.x]); //changed x and y places cause first array index is rows (y position)
             }

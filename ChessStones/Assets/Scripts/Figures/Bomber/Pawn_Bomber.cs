@@ -12,15 +12,15 @@ public class Pawn_Bomber : FigureInteract
 
     private FigureInteract enteredRadiusEnemy;
 
-    public override void GlobalEndOfTurn()
+    public override void OnGlobalEndOfTurn()
     {
-        base.GlobalEndOfTurn();
+        base.OnGlobalEndOfTurn();
 
-        if (currentSquare == null) return;
+        if (_currentSquare == null) return;
 
         enteredRadiusEnemy = null;
 
-        foreach (GameFieldSquare square in currentSquare.neighbourSquares)
+        foreach (GameFieldSquare square in _currentSquare.neighbourSquares)
         {
             if (square != null)
             {
@@ -53,7 +53,7 @@ public class Pawn_Bomber : FigureInteract
         blowEffect.Play();
     }
 
-    public override void Move(GameFieldSquare square)
+    public override void Move(GameFieldSquare square, List<string> flags)
     {
         SetAtSquare(square);
 

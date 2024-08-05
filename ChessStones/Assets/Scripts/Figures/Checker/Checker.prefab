@@ -172,10 +172,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 1d00b40235e94bf4284a46486d3e1a96, type: 2}
   mark: {fileID: 1713654612468088217}
-  visual: {fileID: 2387114551360572255}
+  _visual: {fileID: 2387114551360572255}
   damageText: {fileID: 1702933194937226333}
   shieldText: {fileID: 3030102354879896222}
   playerId: 0
+  role: 0
+  teamMeshes: []
+  teamSkinnedMeshes: []
+  enemyMeshes: []
+  enemySkinnedMeshes: []
+  indexTeamMeshes: []
+  indexEnemyMeshes: []
   selectOffset: {x: 0, y: 0, z: 0}
   unselectOffset: {x: 0, y: 0, z: 0}
   uiCanvas: {fileID: 0}

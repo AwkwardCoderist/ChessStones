@@ -213,7 +213,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979570816611379513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000029802322}
+  m_LocalPosition: {x: 0, y: 0, z: -0.719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,8 +279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.2
+  m_fontSizeBase: 0.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -371,10 +371,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 883f262c3c298544190908f356ae6dce, type: 2}
   mark: {fileID: 911281231467398305}
-  visual: {fileID: 4201056567980044903}
+  _visual: {fileID: 4201056567980044903}
   damageText: {fileID: 923117038127459685}
   shieldText: {fileID: 3557998394648961958}
   playerId: 0
+  role: 0
+  teamMeshes: []
+  teamSkinnedMeshes: []
+  enemyMeshes: []
+  enemySkinnedMeshes: []
+  indexTeamMeshes: []
+  indexEnemyMeshes: []
   selectOffset: {x: 0, y: 1, z: 0}
   unselectOffset: {x: 0, y: 0, z: 0}
   uiCanvas: {fileID: 1256437641256952809}
@@ -426,7 +433,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3495923516149877237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000029802322}
+  m_LocalPosition: {x: 0, y: 0, z: -0.719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -492,8 +499,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.2
+  m_fontSizeBase: 0.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -634,7 +641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5117120894086794153
 RectTransform:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class Rook_RookOnLogs : FigureInteract
     private FigureInteract selectedFigure;
 
 
-    public override List<AvaliableMove> GetDefaultMoves(GameFieldManager field)
+    public override List<AvaliableMove> GetDefaultMoves()
     {
         List<AvaliableMove> result = new List<AvaliableMove>();
 
@@ -30,7 +30,7 @@ public class Rook_RookOnLogs : FigureInteract
             dirY = 6;
         }
 
-        selectedSquare = currentSquare;
+        selectedSquare = _currentSquare;
 
         for (int i = 0; i < 99; i++)
         {
@@ -51,7 +51,7 @@ public class Rook_RookOnLogs : FigureInteract
             }
         }
 
-        selectedSquare = currentSquare;
+        selectedSquare = _currentSquare;
 
         for (int i = 0; i < 99; i++)
         {
@@ -104,7 +104,7 @@ public class Rook_RookOnLogs : FigureInteract
             dirY = 3;
         }
 
-        selectedSquare = currentSquare;
+        selectedSquare = _currentSquare;
 
         for (int i = 0; i < 3; i++)
         {
@@ -126,7 +126,7 @@ public class Rook_RookOnLogs : FigureInteract
             }
         }
 
-        selectedSquare = currentSquare;
+        selectedSquare = _currentSquare;
 
         for (int i = 0; i < 3; i++)
         {
@@ -159,7 +159,7 @@ public class Rook_RookOnLogs : FigureInteract
 
     public void Rotate()
     {
-        visual.transform.rotation *= Quaternion.Euler(0, 90, 0);
+        _visual.transform.rotation *= Quaternion.Euler(0, 90, 0);
         lookForward = !lookForward;
         GameManager.Instance.DeselectFigure();
         GameManager.Instance.PassTurn();

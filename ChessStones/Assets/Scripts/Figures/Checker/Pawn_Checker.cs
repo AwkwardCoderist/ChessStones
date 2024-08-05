@@ -10,7 +10,7 @@ public class Pawn_Checker : FigureInteract
     private int y;
     private FigureInteract enemy;
 
-    public override List<AvaliableMove> GetDefaultMoves(GameFieldManager field)
+    public override List<AvaliableMove> GetDefaultMoves()
     {
         List<AvaliableMove> result = new List<AvaliableMove>();
 
@@ -19,10 +19,10 @@ public class Pawn_Checker : FigureInteract
             int xSide = i % 2 == 0 ? -1 : 1;
             int ySide = i < 2  ? 1 : -1;
 
-            x = (int)currentSquare.Position.x + xSide;
-            y = (int)currentSquare.Position.y - ySide;
+            x = (int)_currentSquare.Position.x + xSide;
+            y = (int)_currentSquare.Position.y - ySide;
 
-            findedSquare = field.GetSquare(x * forward, y);
+            findedSquare = _field.GetSquare(x * forward, y);
 
             if (findedSquare != null)
             {
@@ -32,11 +32,11 @@ public class Pawn_Checker : FigureInteract
                     {
                         enemy = findedSquare.currentFigure;
 
-                        Vector2 afterEnemyPos = findedSquare.Position - currentSquare.Position;
+                        Vector2 afterEnemyPos = findedSquare.Position - _currentSquare.Position;
 
-                        findedSquare = field.GetSquare(
-                            (int)currentSquare.Position.x + (int)afterEnemyPos.x * 2 * forward, 
-                            (int)currentSquare.Position.y + (int)afterEnemyPos.y * 2);
+                        findedSquare = _field.GetSquare(
+                            (int)_currentSquare.Position.x + (int)afterEnemyPos.x * 2 * forward, 
+                            (int)_currentSquare.Position.y + (int)afterEnemyPos.y * 2);
 
                         Debug.Log($"EnemyDir: {(int)afterEnemyPos.x * 2 * forward} {(int)afterEnemyPos.y * 2}");
                         if (findedSquare != null)
@@ -68,7 +68,7 @@ public class Pawn_Checker : FigureInteract
         return result;
     }
 
-    public override void Attack(FigureInteract enemy)
+    public override void Attack(FigureInteract enemy, List<string> flags)
     {
         enemy.TakeDamage(figureInfo.Damage);
         TakeDamage(enemy.figureInfo.Damage);

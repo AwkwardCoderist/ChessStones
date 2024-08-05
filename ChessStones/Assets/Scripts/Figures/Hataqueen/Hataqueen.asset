@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
+  m_Name: Hataqueen
+  m_EditorClassIdentifier: 
+  Name: "\u0417\u043D\u0430\u043C\u0435\u043D\u043E\u0441\u0435\u0446"
+  Damage: 1
+  Shield: 1
+  teamMats: []
+  changeTeamMesh: 0
+  teamMeshes:
+  - {fileID: 4300012, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
+  - {fileID: 4300010, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
+  certainSquareMoves:
+  - {x: -1, y: 1}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: -1, y: 0}
+  - {x: 1, y: 0}
+  - {x: -1, y: -1}
+  - {x: 0, y: -1}
+  - {x: 1, y: -1}
+  directonSquareMoves: []

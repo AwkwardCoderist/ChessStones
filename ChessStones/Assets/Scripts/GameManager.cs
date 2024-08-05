@@ -25,6 +25,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public FigureInteract ControllerFigure { get; set; }
+
+    public GameFieldManager FieldManager => field;
+
+    [Header("Rotate Camera")]
+    [SerializeField] private Transform _rotateCenter;
+    [SerializeField] private float _rotateDuration;
+    [SerializeField] private float _rotateAngle;
+    [SerializeField] private AnimationCurve _rotateCurve;
+    private float _elapsedRotateTime;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,8 +44,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
     }
 
+    private void Update()
+    {
+
+    }
+
     public void SelectFigure(FigureInteract figure)
     {
+
         if (selectedFigure != null) selectedFigure.DeselectFigure();
 
         selectedFigure = figure;
@@ -52,7 +69,7 @@ public class GameManager : MonoBehaviour
         HideAvaliableMoves();
     }
 
-    private List<AvaliableMove> avaliableMoves = new List<AvaliableMove>();
+    public List<AvaliableMove> avaliableMoves = new List<AvaliableMove>();
 
     private void ShowAvaliableMoves()
     {
@@ -60,12 +77,12 @@ public class GameManager : MonoBehaviour
 
         if (selectedFigure != null)
         {
-            avaliableMoves = selectedFigure.GetDefaultMoves(field);
+            avaliableMoves = selectedFigure.GetDefaultMoves();
         }
 
         foreach (AvaliableMove move in avaliableMoves)
         {
-            if(move != null) move.Square.ShowAvaliable();
+            move.Square?.ShowAvaliable();
         }
     }
 
@@ -73,11 +90,22 @@ public class GameManager : MonoBehaviour
     {
         foreach (AvaliableMove move in avaliableMoves)
         {
-            move.Square.HideAvaliable();
+            move.Square?.HideAvaliable();
         }
 
         avaliableMoves.Clear();
 
+    }
+
+    public void ChangeAvaliableMoves(List<AvaliableMove> newMoves)
+    {
+        HideAvaliableMoves();
+        avaliableMoves = newMoves;
+
+        foreach (AvaliableMove move in avaliableMoves)
+        {
+            move.Square?.ShowAvaliable();
+        }
     }
 
     private AvaliableMove findedMove;
@@ -91,27 +119,38 @@ public class GameManager : MonoBehaviour
 
             if (square.currentFigure == selectedFigure || findedMove == null)
             {
-                DeselectFigure();
+                DeselectFigure(); 
+
+                if (ControllerFigure)
+                {
+                    SelectFigure(ControllerFigure);
+                }
+
                 return;
             }
 
+            FigureInteract prevFigure = selectedFigure;
+
             foreach (FigureInteract figure in findedMove.damageFigures)
             {
-                selectedFigure.Attack(figure);
+                selectedFigure.Attack(figure, findedMove.flags);
             }
 
+            if (selectedFigure != prevFigure) return;
 
             Debug.Log($"{square.currentFigure} {selectedFigure}");
-            if(square.currentFigure == null)
-                selectedFigure.Move(square);
+            if(selectedFigure.CurrentShield != 0 && square.currentFigure == null && findedMove.moveToSquare)
+                selectedFigure.Move(square, findedMove.flags);
 
-            DeselectFigure();
+            selectedFigure.EndOfActions();
 
         }
     }
 
     public void PassTurn()
     {
+        if (selectedFigure != null) DeselectFigure();
+
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;
 
@@ -119,7 +158,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (FigureInteract figure in figures)
             {
-                figure.GlobalEndOfTurn();
+                figure.OnGlobalEndOfTurn();
             }
         }
 

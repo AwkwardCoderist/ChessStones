@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
   m_Name: Pawn
   m_EditorClassIdentifier: 
-  Name: 
+  Name: "\u041F\u0435\u0448\u043A\u0430"
   Damage: 1
   Shield: 1
   teamMats: []

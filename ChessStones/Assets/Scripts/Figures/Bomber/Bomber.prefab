@@ -5018,13 +5018,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 6333946cc69bf6740a3f639941ea9739, type: 2}
   mark: {fileID: 5243288141405840687}
-  modelMesh: {fileID: 5827046782837395722}
+  _visual: {fileID: 7798509510253102101}
   damageText: {fileID: 5235981802965404907}
   shieldText: {fileID: 8432690183491355176}
   playerId: 0
+  role: 0
+  teamMeshes: []
+  teamSkinnedMeshes: []
+  enemyMeshes: []
+  enemySkinnedMeshes: []
+  indexTeamMeshes: []
+  indexEnemyMeshes: []
   selectOffset: {x: -0.275, y: 1.762, z: 0.349}
   unselectOffset: {x: -0.275, y: 0.762, z: 0.349}
-  visual: {fileID: 7798509510253102101}
   uiCanvas: {fileID: 6127605633795998311}
   interactCollider: {fileID: 2207978559711360854}
   blowDamage: 10

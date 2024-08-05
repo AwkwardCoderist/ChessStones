@@ -5,22 +5,22 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638498112811673978
-    m_Hash: 4219667464
+      ticks: 638545478818892736
+    m_Hash: 3171462982
   m_LockFileStatus:
     m_FilePath: D:/Documents/GitHub/ChessStones/ChessStones/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638498112812117919
-    m_Hash: 1172123389
+      ticks: 638545479091227871
+    m_Hash: 1683448059
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: D:/Documents/GitHub/ChessStones/ChessStones/Packages
-m_EditorVersion: 2022.3.11f1 (d00248457e15)
+m_EditorVersion: 2022.3.23f1 (dbb3f7c5b5c6)
 m_ResolvedPackages:
 - packageId: com.caseydecoder.doxygengenerator@https://github.com/CaseyHofland/DoxygenGenerator.git
   testable: 0
@@ -170,6 +170,7 @@ m_ResolvedPackages:
     - 2.9.5
     - 2.9.7
     - 2.10.0
+    - 2.10.1
     - 3.0.0-pre.3
     - 3.0.0-pre.4
     - 3.0.0-pre.5
@@ -179,10 +180,12 @@ m_ResolvedPackages:
     - 3.0.0-pre.9
     - 3.0.1
     - 3.1.0
+    - 3.1.1
     compatible:
     - 2.9.5
     - 2.9.7
     - 2.10.0
+    - 2.10.1
     - 3.0.0-pre.3
     - 3.0.0-pre.4
     - 3.0.0-pre.5
@@ -192,6 +195,7 @@ m_ResolvedPackages:
     - 3.0.0-pre.9
     - 3.0.1
     - 3.1.0
+    - 3.1.1
     recommended: 2.9.7
     deprecated: []
   dependencies:
@@ -255,12 +259,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.collab-proxy@2.2.0
+- packageId: com.unity.collab-proxy@2.3.1
   testable: 0
   isDirectDependency: 1
-  version: 2.2.0
+  version: 2.3.1
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.collab-proxy@2.2.0
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.collab-proxy@2.3.1
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -348,11 +352,13 @@ m_ResolvedPackages:
     - 2.1.0
     - 2.2.0
     - 2.3.1
+    - 2.4.3
+    - 2.4.4
     compatible:
-    - 2.1.0
-    - 2.2.0
     - 2.3.1
-    recommended: 2.1.0
+    - 2.4.3
+    - 2.4.4
+    recommended: 2.3.1
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -381,16 +387,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638326189440000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.2/manual/index.html
+  datePublishedTicks: 638448201880000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.3/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: 33c8fba1793946be3c73f738edf70db0b5546afd
+    revision: 613362ccb4468f55ee42e0a35809fb9a61f3f8f1
     path: 
   unityLifecycle:
-    version: 2.1.0
+    version: 2.3.1
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -442,7 +448,7 @@ m_ResolvedPackages:
     version: default
   resolvedDependencies:
   - name: com.unity.ide.visualstudio
-    version: 2.0.21
+    version: 2.0.22
   - name: com.unity.test-framework
     version: 1.1.33
   - name: com.unity.ext.nunit
@@ -452,7 +458,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.25
+    version: 3.0.28
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -460,7 +466,7 @@ m_ResolvedPackages:
   - name: com.unity.performance.profile-analyzer
     version: 1.2.2
   - name: com.unity.testtools.codecoverage
-    version: 1.2.4
+    version: 1.2.5
   - name: com.unity.settings-manager
     version: 2.0.1
   keywords: []
@@ -490,12 +496,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.probuilder@5.1.1
+- packageId: com.unity.probuilder@5.2.2
   testable: 0
   isDirectDependency: 1
-  version: 5.1.1
+  version: 5.2.2
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.probuilder@5.1.1
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.probuilder@5.2.2
   assetPath: Packages/com.unity.probuilder
   name: com.unity.probuilder
   displayName: ProBuilder
@@ -569,10 +575,8 @@ m_ResolvedPackages:
     - 6.0.1-pre.2
     - 6.0.1
     compatible:
-    - 5.1.1
-    - 5.2.0
     - 5.2.2
-    recommended: 5.1.1
+    recommended: 5.2.2
     deprecated: []
   dependencies:
   - name: com.unity.settings-manager
@@ -619,16 +623,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638269927630000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.probuilder@5.1/manual/index.html
+  datePublishedTicks: 638368700860000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.probuilder@5.2/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.com/Unity-Technologies/com.unity.probuilder.git
-    revision: 2ffcb3295c03b76fcafb93b92d1b4041e67591c3
+    revision: d1aaa03087398cf9477de8e6cfbfb66b180ab71d
     path: 
   unityLifecycle:
-    version: 5.1.1
+    version: 5.2.2
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -756,6 +760,7 @@ m_ResolvedPackages:
     - 3.0.6
     - 3.0.7
     - 3.0.8
+    - 3.0.9
     - 3.2.0-pre.1
     - 3.2.0-pre.2
     - 3.2.0-pre.3
@@ -765,12 +770,14 @@ m_ResolvedPackages:
     - 3.2.0-pre.7
     - 3.2.0-pre.8
     - 3.2.0-pre.9
+    - 3.2.0-pre.10
     - 4.0.0-pre.1
     - 4.0.0-pre.2
     compatible:
     - 3.0.6
     - 3.0.7
     - 3.0.8
+    - 3.0.9
     - 3.2.0-pre.1
     - 3.2.0-pre.2
     - 3.2.0-pre.3
@@ -780,9 +787,10 @@ m_ResolvedPackages:
     - 3.2.0-pre.7
     - 3.2.0-pre.8
     - 3.2.0-pre.9
+    - 3.2.0-pre.10
     - 4.0.0-pre.1
     - 4.0.0-pre.2
-    recommended: 3.0.8
+    recommended: 3.0.9
     deprecated: []
   dependencies:
   - name: com.unity.ugui
@@ -826,12 +834,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.timeline@1.7.5
+- packageId: com.unity.timeline@1.7.6
   testable: 0
   isDirectDependency: 1
-  version: 1.7.5
+  version: 1.7.6
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.timeline@1.7.5
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.timeline@1.7.6
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -932,8 +940,8 @@ m_ResolvedPackages:
     - 1.8.4
     - 1.8.5
     - 1.8.6
+    - 1.8.7
     compatible:
-    - 1.7.5
     - 1.7.6
     - 1.8.0
     - 1.8.1
@@ -942,6 +950,7 @@ m_ResolvedPackages:
     - 1.8.4
     - 1.8.5
     - 1.8.6
+    - 1.8.7
     recommended: 1.7.6
     deprecated: []
   dependencies:
@@ -978,16 +987,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638229649600000000
+  datePublishedTicks: 638326112840000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.timeline@1.7/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: fdb1ca9a2c2a131e0ff9cb257b2eae3b53337b3a
+    revision: 02f49ada64a9f88044207cf42ba407dc634ef8e6
     path: 
   unityLifecycle:
-    version: 1.7.5
+    version: 1.7.6
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -1066,12 +1075,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.visualscripting@1.9.1
+- packageId: com.unity.visualscripting@1.9.2
   testable: 0
   isDirectDependency: 1
-  version: 1.9.1
+  version: 1.9.2
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.visualscripting@1.9.1
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.visualscripting@1.9.2
   assetPath: Packages/com.unity.visualscripting
   name: com.unity.visualscripting
   displayName: Visual Scripting
@@ -1119,7 +1128,6 @@ m_ResolvedPackages:
     - 1.9.2
     - 1.9.4
     compatible:
-    - 1.9.1
     - 1.9.2
     - 1.9.4
     recommended: 1.9.4
@@ -1150,16 +1158,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638284821510000000
+  datePublishedTicks: 638452551610000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 5e78e9c354ed1567dbcea08e2bd9992e4a473cfb
+    revision: 0dd874ef58a75ee4b4df6a81e65230e2602096a3
     path: 
   unityLifecycle:
-    version: 1.9.1
+    version: 1.9.2
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3129,12 +3137,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.ide.visualstudio@2.0.21
+- packageId: com.unity.ide.visualstudio@2.0.22
   testable: 0
   isDirectDependency: 0
-  version: 2.0.21
+  version: 2.0.22
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.ide.visualstudio@2.0.21
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.ide.visualstudio@2.0.22
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -3176,7 +3184,6 @@ m_ResolvedPackages:
     - 2.0.21
     - 2.0.22
     compatible:
-    - 2.0.21
     - 2.0.22
     recommended: 2.0.22
     deprecated: []
@@ -3203,28 +3210,28 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638300315250000000
+  datePublishedTicks: 638326061910000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.visualstudio@2.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: eb2b500b99f6429d3d9dcb8acbcbd366dfbb42be
+    revision: 700b44077345e97d37d464ff25507638983aed64
     path: 
   unityLifecycle:
-    version: 2.0.21
+    version: 2.0.22
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.ide.rider@3.0.25
+- packageId: com.unity.ide.rider@3.0.28
   testable: 0
   isDirectDependency: 0
-  version: 3.0.25
+  version: 3.0.28
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.ide.rider@3.0.25
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.ide.rider@3.0.28
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -3283,12 +3290,11 @@ m_ResolvedPackages:
     - 3.0.26
     - 3.0.27
     - 3.0.28
+    - 3.0.31
     compatible:
-    - 3.0.25
-    - 3.0.26
-    - 3.0.27
     - 3.0.28
-    recommended: 3.0.28
+    - 3.0.31
+    recommended: 3.0.31
     deprecated: []
   dependencies:
   - name: com.unity.ext.nunit
@@ -3307,16 +3313,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638300315270000000
+  datePublishedTicks: 638447139880000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: e103b4771a884e656407e1b7219e5e3c20222552
+    revision: f4880c72477e9bbd7321c0dbda4428fa10d916df
     path: 
   unityLifecycle:
-    version: 3.0.25
+    version: 3.0.28
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3595,6 +3601,7 @@ m_ResolvedPackages:
     - 1.4.2
     - 1.4.3
     - 1.4.4
+    - 1.4.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -3615,6 +3622,7 @@ m_ResolvedPackages:
     - 1.4.2
     - 1.4.3
     - 1.4.4
+    - 1.4.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -3664,12 +3672,12 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
-- packageId: com.unity.testtools.codecoverage@1.2.4
+- packageId: com.unity.testtools.codecoverage@1.2.5
   testable: 0
   isDirectDependency: 0
-  version: 1.2.4
+  version: 1.2.5
   source: 1
-  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.testtools.codecoverage@1.2.4
+  resolvedPath: D:\Documents\GitHub\ChessStones\ChessStones\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5
   assetPath: Packages/com.unity.testtools.codecoverage
   name: com.unity.testtools.codecoverage
   displayName: Code Coverage
@@ -3678,7 +3686,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: asset
+  type: assets
   description: Use this package to export code coverage data and reports from your
     automated tests. Additionally, the Code Coverage package offers a Coverage Recording
     feature which allows capturing coverage data on demand, for manual testing or
@@ -3718,10 +3726,11 @@ m_ResolvedPackages:
     - 1.2.3
     - 1.2.4
     - 1.2.5
+    - 1.2.6
     compatible:
-    - 1.2.4
     - 1.2.5
-    recommended: 1.2.5
+    - 1.2.6
+    recommended: 1.2.6
     deprecated: []
   dependencies:
   - name: com.unity.test-framework
@@ -3754,16 +3763,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638212235100000000
+  datePublishedTicks: 638386640140000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.2/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.testtools.codecoverage.git
-    revision: a7dd0751db55cd55e3b336723fb51433c1de7244
+    revision: afeb9febf6597fcc31c99ca116d6a82b1e97b9f5
     path: 
   unityLifecycle:
-    version: 1.2.4
+    version: 1.2.5
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0

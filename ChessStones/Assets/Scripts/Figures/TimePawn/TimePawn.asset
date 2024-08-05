@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
+  m_Name: TimePawn
+  m_EditorClassIdentifier: 
+  Name: TimePawn
+  Damage: 1
+  Shield: 1
+  teamMats:
+  - {fileID: 3825107052621385680, guid: 1bb3ca17361571145ad57311a75434d4, type: 3}
+  - {fileID: 3290998451573410129, guid: 1bb3ca17361571145ad57311a75434d4, type: 3}
+  changeTeamMesh: 1
+  teamMeshes:
+  - {fileID: 4300012, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
+  - {fileID: 4300010, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
+  certainSquareMoves:
+  - {x: 0, y: 1}
+  - {x: 0, y: 2}
+  - {x: 0, y: -1}
+  - {x: 0, y: -2}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: -1, y: 0}
+  - {x: -2, y: 0}
+  directonSquareMoves: []
