@@ -36,7 +36,7 @@ public class FigureSelector : MonoBehaviour
 
             for (int k = 0; k < figuresIds[i].figures.Count; k++)
             {
-                player1selectors[i].options.Add(new TMPro.TMP_Dropdown.OptionData(figuresIds[i].figures[k].name));
+                player1selectors[i].options.Add(new TMPro.TMP_Dropdown.OptionData(figuresIds[i].figures[k].figureInfo.Name));
             }
 
             player1selectors[i].SetValueWithoutNotify(0);
@@ -54,7 +54,7 @@ public class FigureSelector : MonoBehaviour
 
             for (int k = 0; k < figuresIds[i].figures.Count; k++)
             {
-                player2selectors[i].options.Add(new TMPro.TMP_Dropdown.OptionData(figuresIds[i].figures[k].name));
+                player2selectors[i].options.Add(new TMPro.TMP_Dropdown.OptionData(figuresIds[i].figures[k].figureInfo.Name));
             }
 
             player1selectors[i].SetValueWithoutNotify(0);

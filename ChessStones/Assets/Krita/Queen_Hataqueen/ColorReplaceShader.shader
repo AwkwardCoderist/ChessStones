@@ -9,6 +9,7 @@ Shader "Unlit/ColorReplaceShader"
     {
         Tags { "RenderType"="Transparent" }
         LOD 100
+        Cull off
 
         Pass
         {

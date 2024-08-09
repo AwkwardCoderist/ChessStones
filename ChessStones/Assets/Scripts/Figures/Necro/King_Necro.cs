@@ -63,11 +63,10 @@ public class King_Necro : FigureInteract
         if (flags.Contains("POWER"))
         {
             additionalDamage += 1;
-            damageText.text = (figureInfo.Damage + additionalDamage).ToString();
 
-            int addShield = enemy.CurrentShield / 2;
-            if(addShield == 0) addShield = 1;
-            CurrentShield += addShield;
+            int addHealth = enemy.CurrentHealth / 2;
+            if(addHealth == 0) addHealth = 1;
+            CurrentHealth += addHealth;
 
             enemy.Death();
         }

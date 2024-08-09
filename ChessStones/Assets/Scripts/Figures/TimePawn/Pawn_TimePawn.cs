@@ -107,7 +107,7 @@ public class Pawn_TimePawn : FigureInteract
     public override void Death()
     {
         base.Death();
-        if (_nextPawn?.currentShield > 0) _nextPawn.Death();
+        if (_nextPawn?._currentHealth > 0) _nextPawn.Death();
     }
 
 }

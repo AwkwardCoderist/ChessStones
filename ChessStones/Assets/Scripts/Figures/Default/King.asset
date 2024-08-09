@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
   m_Name: King
   m_EditorClassIdentifier: 
-  Name: 
+  Name: "\u041A\u043E\u0440\u043E\u043B\u044C"
+  BattleDescription: 
+  DetailDescription: 
   Damage: 1
-  Shield: 1
+  Health: 1
   teamMats: []
   changeTeamMesh: 1
   teamMeshes:

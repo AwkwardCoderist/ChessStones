@@ -7,6 +7,7 @@ public class Queen_Hataqueen : FigureInteract
 
     [Header("Hataqueen Params")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private BillboardObject _billboard;
 
     private GameFieldManager gameFieldManager;
 
@@ -22,6 +23,8 @@ public class Queen_Hataqueen : FigureInteract
         base.Start();
 
         _spriteRenderer.material.SetFloat("_Inverted", playerId);
+        _billboard.enabled = true;
+
 
         gameFieldManager = GameManager.Instance.FieldManager;
         
@@ -51,7 +54,7 @@ public class Queen_Hataqueen : FigureInteract
         deadPawns = 0;
         foreach (FigureInteract figure in pawns)
         {
-            if(figure.CurrentShield == 0) { deadPawns++; }
+            if(figure.CurrentHealth == 0) { deadPawns++; }
         }
 
         UpdatePawnsAttack();

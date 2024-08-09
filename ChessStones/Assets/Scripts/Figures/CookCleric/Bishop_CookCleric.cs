@@ -47,7 +47,7 @@ public class Bishop_CookCleric : FigureInteract
         foreach (FigureInteract figure in _findedFigures)
         {
             _alreadyHealed.Add(figure);
-            figure.CurrentShield += _healAmount;
+            figure.CurrentHealth += _healAmount;
         }
 
         GameManager.Instance.DeselectFigure();

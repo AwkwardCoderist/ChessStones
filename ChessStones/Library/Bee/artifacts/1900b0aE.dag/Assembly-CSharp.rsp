@@ -378,6 +378,9 @@
 "Assets/Scripts/GameFieldManager.cs"
 "Assets/Scripts/GameFieldSquare.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/ModelRotater.cs"
+"Assets/Scripts/ModelsViewer.cs"
+"Assets/Scripts/SingleUnityLayer.cs"
 -langversion:9.0
 
 /deterministic

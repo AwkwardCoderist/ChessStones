@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,15 +15,18 @@ public class GameManager : MonoBehaviour
 
     public int amountOfTeams = 2;
 
-    private int currentPlayerId = 0;
+    [SerializeField] private List<Color> _teamColors = new List<Color>();
+
+
+    private int _currentPlayerId = 0;
 
     public int CurrentPlayerId 
     { 
-        get => currentPlayerId;
+        get => _currentPlayerId;
         set 
         { 
-            currentPlayerId = value; 
-            currentPlayerText.text = (currentPlayerId + 1).ToString();
+            _currentPlayerId = value; 
+            currentPlayerText.text = (_currentPlayerId + 1).ToString();
         }
     }
 
@@ -37,6 +42,14 @@ public class GameManager : MonoBehaviour
     private float _elapsedRotateTime;
     private Quaternion _startRotation;
     private Quaternion _rotateTarget;
+
+    [Header("Figure Info")]
+    [SerializeField] private GameObject _infoPanel;
+    [SerializeField] private TMP_Text _infoName;
+    [SerializeField] private Image _infoColor;
+    [SerializeField] private TMP_Text _infoDamage;
+    [SerializeField] private TMP_Text _infoHealth;
+    [SerializeField] private TMP_Text _infoDescription;
 
     private void Awake()
     {
@@ -61,6 +74,21 @@ public class GameManager : MonoBehaviour
             _rotateCenter.rotation = Quaternion.Lerp(_startRotation, _rotateTarget, t);
             _elapsedRotateTime += Time.deltaTime;
         }
+    }
+
+    public void ShowFigureInfo(FigureInteract figure)
+    {
+        _infoPanel.SetActive(true);
+        _infoName.text = figure.figureInfo.Name;
+        _infoColor.color = _teamColors[figure.playerId];
+        _infoDamage.text = figure.TotalDamage.ToString();
+        _infoHealth.text = figure.CurrentHealth.ToString();
+        _infoDescription.text = figure.figureInfo.BattleDescription;
+    }
+
+    public void HideFigureInfo()
+    {
+        _infoPanel.SetActive(false);
     }
 
     public void SelectFigure(FigureInteract figure)
@@ -153,7 +181,7 @@ public class GameManager : MonoBehaviour
             if (selectedFigure != prevFigure) return;
 
             Debug.Log($"{square.currentFigure} {selectedFigure}");
-            if(selectedFigure.CurrentShield != 0 && square.currentFigure == null && findedMove.moveToSquare)
+            if(selectedFigure.CurrentHealth != 0 && square.currentFigure == null && findedMove.moveToSquare)
                 selectedFigure.Move(square, findedMove.flags);
 
             selectedFigure.EndOfActions();

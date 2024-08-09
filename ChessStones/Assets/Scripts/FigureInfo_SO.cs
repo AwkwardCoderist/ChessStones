@@ -13,8 +13,10 @@ public enum MoveType
 public class FigureInfo_SO : ScriptableObject
 {
     public string Name;
+    [TextArea] public string BattleDescription;
+    [TextArea] public string DetailDescription;
     public int Damage = 1;
-    public int Shield = 1;
+    public int Health = 1;
 
     public List<Material> teamMats;
     public bool changeTeamMesh;
