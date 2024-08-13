@@ -504,27 +504,6 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 4639539900326139701}
   m_SourcePrefab: {fileID: 100100000, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
---- !u!1 &84378702596726310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911281231467398305, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
-  m_PrefabInstance: {fileID: 976789122297010823}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &90584941184169954 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 923117038127459685, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
-  m_PrefabInstance: {fileID: 976789122297010823}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2081089538355525998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1256437641256952809, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
-  m_PrefabInstance: {fileID: 976789122297010823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2396853117890265211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3228260414225226492, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
@@ -543,10 +522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 7417f14befc29934e854004a2aea89f3, type: 2}
-  mark: {fileID: 84378702596726310}
   _visual: {fileID: 7784369501176288025}
-  damageText: {fileID: 90584941184169954}
-  shieldText: {fileID: 4390671229075110177}
+  _outline: {fileID: 4830031660158931169}
   playerId: 0
   role: 2
   teamMeshes: []
@@ -561,23 +538,23 @@ MonoBehaviour:
   - rend: {fileID: 8576928062330958540}
     skin: {fileID: 0}
     matIndex: 2
-  selectOffset: {x: 0, y: 0, z: 0}
+  selectOffset: {x: 0, y: 1, z: 0}
   unselectOffset: {x: 0, y: 0, z: 0}
-  uiCanvas: {fileID: 2081089538355525998}
   interactCollider: {fileID: 6290530315532733535}
+  _moveDuration: 0.5
   _buttonCanvas: {fileID: 1241292171142681914}
   _healEffect: {fileID: 797006636529706242}
   _healEffectDelay: 0.1
   _healAmount: 2
---- !u!114 &4390671229075110177 stripped
+--- !u!114 &4830031660158931169 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3557998394648961958, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5659327894234810982, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
   m_PrefabInstance: {fileID: 976789122297010823}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_GameObject: {fileID: 2396853117890265211}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &6290530315532733535 stripped

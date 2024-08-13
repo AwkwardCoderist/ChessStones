@@ -6,14 +6,13 @@ public class Pawn_TimePawn : FigureInteract
 {
 
     [Header("TimePawn Params")]
-    [SerializeField] private List<VisualMeshTeam> timeTeamMeshes;
-    [SerializeField] private List<VisualMeshTeam> timeEnemyMeshes;
 
     [SerializeField] private GameObject _clockObject;
 
     private GameFieldManager _gameFieldManager;
 
     public Pawn_TimePawn _nextPawn;
+    public LineRenderer TimeLine { get; set; }
 
     public int _pawnOrder;
 
@@ -24,40 +23,7 @@ public class Pawn_TimePawn : FigureInteract
     {
         base.Setup(field, teamId, figureRole);
 
-        int enemyMatId = 0;
-
-        for (int i = 0; i < figureInfo.teamMats.Count; i++)
-        {
-            if (teamId != i)
-            {
-                enemyMatId = i;
-                break;
-            }
-        }//find enemy material
-
-        Material[] mats;
-
-        for (int i = 0; i < 2; i++)
-        {
-            foreach (VisualMeshTeam mesh in i == 0 ? timeTeamMeshes : timeEnemyMeshes)
-            {
-                if (mesh.rend)
-                {
-                    mats = mesh.rend.materials;
-                    mats[mesh.matIndex] = figureInfo.teamMats[i == 0 ? teamId : enemyMatId];
-                    mesh.rend.materials = mats;
-                }
-                else if (mesh.skin)
-                {
-                    mats = mesh.skin.materials;
-                    mats[mesh.matIndex] = figureInfo.teamMats[i == 0 ? teamId : enemyMatId];
-                    mesh.skin.materials = mats;
-                }
-            }
-        }
-
         _clockObject.SetActive(false);
-
 
         _gameFieldManager = GameManager.Instance.FieldManager;
 
@@ -71,7 +37,7 @@ public class Pawn_TimePawn : FigureInteract
                 Debug.Log($"timepawn {currentId} {i}");
                 Pawn_TimePawn selectedPawn = _gameFieldManager.PlayersFigures[playerId][i] as Pawn_TimePawn;
 
-                if(selectedPawn != null)
+                if (selectedPawn != null)
                 {
                     selectedPawn._nextPawn = this;
                     break;
@@ -79,6 +45,7 @@ public class Pawn_TimePawn : FigureInteract
             }
         }
 
+        TimeLine = field.AddTimePawn(this, teamId);
     }
 
 
@@ -86,12 +53,14 @@ public class Pawn_TimePawn : FigureInteract
     {
         base.SelectFigure();
         _clockObject.SetActive(true);
+        TimeLine.enabled = true;
     }
 
     public override void DeselectFigure()
     {
         base.DeselectFigure();
         _clockObject.SetActive(false);
+        TimeLine.enabled = false;
     }
 
     public override void Move(GameFieldSquare square, List<string> flags)
@@ -107,6 +76,7 @@ public class Pawn_TimePawn : FigureInteract
     public override void Death()
     {
         base.Death();
+        _gameFieldManager.RemoveTimePawn(this, playerId);
         if (_nextPawn?._currentHealth > 0) _nextPawn.Death();
     }
 

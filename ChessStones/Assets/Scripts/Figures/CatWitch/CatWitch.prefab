@@ -498,8 +498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 84e017fdf1dc98a478e1d1882c5dfbea, type: 2}
-  mark: {fileID: 3370951644833320270}
   _visual: {fileID: 5520261626835835486}
+  _outline: {fileID: 7846532132527932297}
   playerId: 0
   role: 2
   teamMeshes: []
@@ -514,9 +514,10 @@ MonoBehaviour:
   - rend: {fileID: 6312662132595538827}
     skin: {fileID: 0}
     matIndex: 2
-  selectOffset: {x: 0, y: 0, z: 0}
+  selectOffset: {x: 0, y: 1, z: 0}
   unselectOffset: {x: 0, y: 0.04, z: 0}
   interactCollider: {fileID: 8696363661906304823}
+  _moveDuration: 0.5
   _buttonCanvas: {fileID: 5588648277081815646}
   _controlEffect: {fileID: 6649345836099318595}
   _delayToControl: 5
@@ -524,16 +525,22 @@ MonoBehaviour:
   _readyText: "\u041E\u0447\u0430\u0440\u043E\u0432\u0430\u0442\u044C \u0432\u0440\u0430\u0433\u0430"
   _notReadyText: "\u0421\u043E\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044F \u0441
     \u043C\u044B\u0441\u043B\u044F\u043C\u0438"
---- !u!1 &3370951644833320270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911281231467398305, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
-  m_PrefabInstance: {fileID: 2480783944716863983}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4963854161757646390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7390025277075613657, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
   m_PrefabInstance: {fileID: 2480783944716863983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7846532132527932297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5659327894234810982, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+  m_PrefabInstance: {fileID: 2480783944716863983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054007672217457427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &8696363661906304823 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6539846191949879000, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}

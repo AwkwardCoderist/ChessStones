@@ -5000,6 +5000,17 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1800811042318977900}
   m_SourcePrefab: {fileID: 100100000, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+--- !u!114 &788018915199970280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5659327894234810982, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+  m_PrefabInstance: {fileID: 4928736499154493838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542251766415539058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2207978559711360854 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6539846191949879000, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
@@ -5008,11 +5019,6 @@ BoxCollider:
 --- !u!4 &2515479669808350807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7390025277075613657, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
-  m_PrefabInstance: {fileID: 4928736499154493838}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5243288141405840687 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911281231467398305, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
   m_PrefabInstance: {fileID: 4928736499154493838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7542251766415539058 stripped
@@ -5033,8 +5039,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   figureInfo: {fileID: 11400000, guid: 6333946cc69bf6740a3f639941ea9739, type: 2}
-  mark: {fileID: 5243288141405840687}
   _visual: {fileID: 2683953701223985241}
+  _outline: {fileID: 788018915199970280}
   playerId: 0
   role: 0
   teamMeshes:
@@ -5047,6 +5053,7 @@ MonoBehaviour:
   selectOffset: {x: -0.275, y: 1.762, z: 0.349}
   unselectOffset: {x: -0.275, y: 0.762, z: 0.349}
   interactCollider: {fileID: 2207978559711360854}
+  _moveDuration: 0.5
   blowDamage: 3
   blowEffect: {fileID: 4505712072233287974}
 --- !u!1001 &6987535779965270340

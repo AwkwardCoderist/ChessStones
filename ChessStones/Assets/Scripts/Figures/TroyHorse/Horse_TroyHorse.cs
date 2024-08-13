@@ -21,7 +21,7 @@ public class Horse_TroyHorse : FigureInteract
         new Vector3(-2,1,0)
     };
 
-    private List<FigureInteract> insideFigures = new List<FigureInteract>();
+    private List<FigureInteract> _insideFigures = new List<FigureInteract>();
     private List<FigureInteract> interactedWithFigure = new List<FigureInteract>();
 
     private List<Button> spawnedButtons = new List<Button>();
@@ -56,9 +56,9 @@ public class Horse_TroyHorse : FigureInteract
     {
         int i = 0;
 
-        for(; i < insideFigures.Count; i++)
+        for(; i < _insideFigures.Count; i++)
         {
-            if (interactedWithFigure.Contains(insideFigures[i])) return;
+            if (interactedWithFigure.Contains(_insideFigures[i])) return;
 
             if (i < spawnedButtons.Count)
             {
@@ -75,7 +75,7 @@ public class Horse_TroyHorse : FigureInteract
 
             if(textName != null)
             {
-                textName.text = insideFigures[i].figureInfo.Name;
+                textName.text = _insideFigures[i].figureInfo.Name;
             }
 
             selectedButton.onClick.RemoveAllListeners();
@@ -121,7 +121,7 @@ public class Horse_TroyHorse : FigureInteract
     {
         List<AvaliableMove> result = new List<AvaliableMove>();
 
-        if (insideFigures.Count < maxFiguresInside)
+        if (_insideFigures.Count < maxFiguresInside)
         {
             foreach (GameFieldSquare square in _currentSquare.neighbourSquares)
             {
@@ -170,7 +170,7 @@ public class Horse_TroyHorse : FigureInteract
     {
         if (flags.Contains("PICKUP TEAMMATE"))
         {
-            insideFigures.Add(enemy);
+            _insideFigures.Add(enemy);
             enemy.gameObject.SetActive(false);
             enemy._currentSquare.currentFigure = null;
             enemy._currentSquare = null;
@@ -186,11 +186,11 @@ public class Horse_TroyHorse : FigureInteract
         Debug.Log("Horse Move");
         if (flags.Contains("PLACE TEAMMATE"))
         {
-            insideFigures[selectedInsideIndex].gameObject.SetActive(true);
-            insideFigures[selectedInsideIndex].SetAtSquare(square);
-            interactedWithFigure.Add(insideFigures[selectedInsideIndex]);
+            _insideFigures[selectedInsideIndex].gameObject.SetActive(true);
+            _insideFigures[selectedInsideIndex].SetAtSquare(square);
+            interactedWithFigure.Add(_insideFigures[selectedInsideIndex]);
 
-            insideFigures.RemoveAt(selectedInsideIndex);
+            _insideFigures.RemoveAt(selectedInsideIndex);
             UpdateInsideFigures();
             GameManager.Instance.ChangeAvaliableMoves(GetDefaultMoves());
         }
@@ -205,13 +205,18 @@ public class Horse_TroyHorse : FigureInteract
 
     public override void EndOfActions()
     {
+        foreach (FigureInteract figure in _insideFigures)
+        {
+            figure.transform.position = _currentSquare.transform.position;
+        }
+
         if(_performedMove) GameManager.Instance.PassTurn();
         _performedMove = false;
     }
 
     public override void Death()
     {
-        foreach(FigureInteract figure in insideFigures)
+        foreach(FigureInteract figure in _insideFigures)
         {
             figure.Death();
         }

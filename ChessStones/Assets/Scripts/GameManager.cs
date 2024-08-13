@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         set 
         { 
             _currentPlayerId = value; 
-            currentPlayerText.text = (_currentPlayerId + 1).ToString();
+            currentPlayerText.text = "игрок " + (_currentPlayerId + 1).ToString();
         }
     }
 
@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
     private float _elapsedRotateTime;
     private Quaternion _startRotation;
     private Quaternion _rotateTarget;
+
+    [Header("Canvas Components")]
+    [SerializeField] private GameObject _processCanvas;
+    [SerializeField] private GameObject _mainMenuCanvas;
 
     [Header("Figure Info")]
     [SerializeField] private GameObject _infoPanel;
@@ -63,6 +67,10 @@ public class GameManager : MonoBehaviour
     {
         _startRotation = _rotateCenter.rotation;
         _rotateTarget = _rotateCenter.rotation;
+        CurrentPlayerId = CurrentPlayerId;
+
+        _processCanvas.SetActive(false);
+        _mainMenuCanvas.SetActive(true);
     }
 
     private float t;
@@ -74,6 +82,23 @@ public class GameManager : MonoBehaviour
             _rotateCenter.rotation = Quaternion.Lerp(_startRotation, _rotateTarget, t);
             _elapsedRotateTime += Time.deltaTime;
         }
+    }
+
+    [ContextMenu("StartGame")]
+    public void StartGame()
+    {
+        field.SpawnBoard();
+
+        _processCanvas.SetActive(true);
+        _mainMenuCanvas.SetActive(false);
+    }
+
+    public void EndGame()
+    {
+        field.ClearBoard();
+
+        _processCanvas.SetActive(false);
+        _mainMenuCanvas.SetActive(true);
     }
 
     public void ShowFigureInfo(FigureInteract figure)
@@ -195,7 +220,7 @@ public class GameManager : MonoBehaviour
         if (selectedFigure != null) DeselectFigure();
 
 
-        _startRotation = _rotateCenter.rotation * Quaternion.AngleAxis(-0.01f, Vector3.up);
+        _startRotation = _rotateCenter.rotation * Quaternion.AngleAxis(-0.05f, Vector3.up);
         _rotateTarget *= Quaternion.AngleAxis(_rotateAngle, Vector3.up);
         _elapsedRotateTime = 0;
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using DG.Tweening;
 
 [System.Serializable]
 public class AvaliableMove
@@ -25,8 +26,9 @@ public class AvaliableMove
 public class FigureInteract : MonoBehaviour
 {
     public FigureInfo_SO figureInfo;
-    [SerializeField] protected GameObject mark;
+    //[SerializeField] protected GameObject mark;
     [SerializeField] protected GameObject _visual;
+    [SerializeField] protected Outline _outline;
 
 
     public int playerId;
@@ -54,6 +56,8 @@ public class FigureInteract : MonoBehaviour
     [Header("Death Disable Components")]
     [SerializeField] private Collider interactCollider;
 
+    [Header("Dotween")]
+    [SerializeField] private float _moveDuration = 0.5f;
 
     public GameFieldSquare _currentSquare { get; set; }
     public int CurrentHealth
@@ -66,6 +70,8 @@ public class FigureInteract : MonoBehaviour
     }
     public GameObject Visual => _visual;
 
+    private Tweener _moveTweener;
+    private Tweener _visualMoveTweener;
 
     private Dictionary<string, int> AdditionalDamage = new Dictionary<string, int>();
     private int _additionalDamage;
@@ -106,6 +112,7 @@ public class FigureInteract : MonoBehaviour
     protected virtual void Start()
     {
         CurrentHealth = figureInfo.Health;
+        _outline.enabled = false;
 
     }
 
@@ -192,13 +199,13 @@ public class FigureInteract : MonoBehaviour
 
     public virtual void SelectFigure()
     {
-        _visual.transform.localPosition = selectOffset;
+        VisualMove(selectOffset);
     }
 
     public virtual void DeselectFigure()
     {
-        _visual.transform.localPosition = unselectOffset;
-        mark?.SetActive(false);
+        VisualMove(unselectOffset);
+        _outline.enabled = false;
     }
 
     protected GameFieldSquare findedSquare;
@@ -237,19 +244,49 @@ public class FigureInteract : MonoBehaviour
 
     }
 
-    public virtual void SetAtSquare(GameFieldSquare square)
+    public virtual void SetAtSquare(GameFieldSquare square, bool doAnimate = true)
     {
         if (_currentSquare != null) _currentSquare.currentFigure = null;
         _currentSquare = square;
 
-        transform.position = square.transform.position;
         _currentSquare.currentFigure = this;
 
+        if(doAnimate) 
+            AnimateMove(square.transform.position);
+        else
+            transform.position = square.transform.position;
     }
 
     public virtual void Move(GameFieldSquare square, List<string> flags)
     {
         SetAtSquare(square);
+    }
+
+    protected void AnimateMove(Vector3 position)
+    {
+        if (_moveTweener == null)
+            _moveTweener = transform.DOMove(position, _moveDuration).SetAutoKill(false);
+        else
+        {
+            if (_moveTweener.IsPlaying()) _moveTweener.Pause();
+
+            _moveTweener.ChangeStartValue(transform.position);
+            _moveTweener.ChangeEndValue(position);
+            _moveTweener.Restart();
+        }
+    }
+    protected void VisualMove(Vector3 localPosition)
+    {
+        if (_visualMoveTweener == null)
+            _visualMoveTweener = _visual.transform.DOLocalMove(localPosition, _moveDuration).SetAutoKill(false);
+        else
+        {
+            if (_visualMoveTweener.IsPlaying()) _visualMoveTweener.Pause();
+
+            _visualMoveTweener.ChangeStartValue(_visual.transform.localPosition);
+            _visualMoveTweener.ChangeEndValue(localPosition);
+            _visualMoveTweener.Restart();
+        }
     }
 
     public virtual void Attack(FigureInteract enemy, List<string> flags)
@@ -284,7 +321,7 @@ public class FigureInteract : MonoBehaviour
         else
             gameObject.SetActive(false);
 
-        mark?.SetActive(false);
+        _outline.enabled = false;
         if(interactCollider) interactCollider.enabled = false;
     }
 
@@ -302,13 +339,13 @@ public class FigureInteract : MonoBehaviour
 
     protected virtual void OnMouseEnter()
     {
-        if (GameManager.Instance.CurrentPlayerId == playerId) mark.SetActive(true);
+        if (GameManager.Instance.CurrentPlayerId == playerId) _outline.enabled = true;
         GameManager.Instance.ShowFigureInfo(this);
     }
 
     protected virtual void OnMouseExit()
     {
-        if (GameManager.Instance.CurrentPlayerId == playerId) mark.SetActive(false);
+        if (GameManager.Instance.CurrentPlayerId == playerId) _outline.enabled = false;
         GameManager.Instance.HideFigureInfo();
     }
 }

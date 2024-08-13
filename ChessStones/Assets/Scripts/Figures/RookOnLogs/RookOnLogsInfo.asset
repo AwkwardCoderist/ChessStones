@@ -36,8 +36,8 @@ MonoBehaviour:
   Damage: 2
   Health: 3
   teamMats:
-  - {fileID: 2100000, guid: 0a66f92d4a156fb429990985cd093d1d, type: 2}
   - {fileID: 2100000, guid: 28fa2fbd46b0f5a44b230f7ff8bfbb75, type: 2}
+  - {fileID: 2100000, guid: 0a66f92d4a156fb429990985cd093d1d, type: 2}
   changeTeamMesh: 0
   teamMeshes: []
   certainSquareMoves: []
