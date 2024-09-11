@@ -44,8 +44,8 @@ public class Rook_RookOnLogs : FigureInteract
 
                 if (selectedFigure == null)
                 {
-                    createdMove = new AvaliableMove(selectedSquare);
-                    result.Add(createdMove);
+                    _createdMove = new AvaliableMove(selectedSquare);
+                    result.Add(_createdMove);
                 }
                 else break;
             }
@@ -65,8 +65,8 @@ public class Rook_RookOnLogs : FigureInteract
 
                 if (selectedFigure == null)
                 {
-                    createdMove = new AvaliableMove(selectedSquare);
-                    result.Add(createdMove);
+                    _createdMove = new AvaliableMove(selectedSquare);
+                    result.Add(_createdMove);
                 }
                 else break;
             }

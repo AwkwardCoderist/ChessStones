@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,7 +76,7 @@ public class Horse_TroyHorse : FigureInteract
 
             if(textName != null)
             {
-                textName.text = _insideFigures[i].figureInfo.Name;
+                textName.text = LeanLocalization.GetTranslationText(_insideFigures[i].figureInfo.Name);
             }
 
             selectedButton.onClick.RemoveAllListeners();
@@ -104,11 +105,11 @@ public class Horse_TroyHorse : FigureInteract
             {
                 if (square.currentFigure == null)
                 {
-                    createdMove = new AvaliableMove(square);
-                    createdMove.moveToSquare = true;
-                    createdMove.flags.Add("PLACE TEAMMATE");
+                    _createdMove = new AvaliableMove(square);
+                    _createdMove.moveToSquare = true;
+                    _createdMove.flags.Add("PLACE TEAMMATE");
 
-                    result.Add(createdMove);
+                    result.Add(_createdMove);
                 }
             }
         }
@@ -133,11 +134,11 @@ public class Horse_TroyHorse : FigureInteract
                         {
                             if (square.currentFigure.playerId == playerId)
                             {
-                                createdMove = new AvaliableMove(square);
-                                createdMove.moveToSquare = false;
-                                createdMove.damageFigures.Add(square.currentFigure);
-                                createdMove.flags.Add("PICKUP TEAMMATE");
-                                result.Add(createdMove);
+                                _createdMove = new AvaliableMove(square);
+                                _createdMove.moveToSquare = false;
+                                _createdMove.damageFigures.Add(square.currentFigure);
+                                _createdMove.flags.Add("PICKUP TEAMMATE");
+                                result.Add(_createdMove);
                             }
                         }                        
                     }
@@ -155,9 +156,9 @@ public class Horse_TroyHorse : FigureInteract
             {
                 if (findedSquare.currentFigure == null)
                 {
-                    createdMove = new AvaliableMove(findedSquare);
-                    createdMove.moveToSquare = true;
-                    result.Add(createdMove);
+                    _createdMove = new AvaliableMove(findedSquare);
+                    _createdMove.moveToSquare = true;
+                    result.Add(_createdMove);
                 }
             }
         }

@@ -146,6 +146,11 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0, z: 0}
   interactCollider: {fileID: 6539846191949879000}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 39c42dae8ff64af4db8cf6f4dd4377f3, type: 3}
+  _damageSoundVolume: 0.5
 --- !u!65 &6539846191949879000
 BoxCollider:
   m_ObjectHideFlags: 0

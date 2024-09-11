@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 110712580127415441}
   - component: {fileID: 2347763970168652397}
   - component: {fileID: 6966976379911653786}
+  - component: {fileID: 4689073285651018011}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -127,15 +128,9 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 8120853647011029843}
   m_ItemImage: {fileID: 0}
-  m_Value: 1
+  m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -160,6 +155,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4689073285651018011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786307042905650432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b305bea692d569468dd3feda0ce869f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options: []
 --- !u!1 &1268245486676687445
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +380,7 @@ GameObject:
   - component: {fileID: 7437635138594655816}
   - component: {fileID: 6471256927996021924}
   - component: {fileID: 8120853647011029843}
+  - component: {fileID: 6335185380219724369}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -495,6 +504,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6335185380219724369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500421913812398658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: 
 --- !u!1 &4126825415659608304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option B
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

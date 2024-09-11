@@ -589,7 +589,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 6912123140673264107}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296157050766869271}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -635,6 +635,10 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0, z: 0}
   interactCollider: {fileID: 373508676768190259}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 1bda1660ce729ff4c98d4a21c581e412, type: 3}
   maxFiguresInside: 3
   buttonsObj: {fileID: 4762236480598034948}
   genericButton: {fileID: 1471188047735413757}

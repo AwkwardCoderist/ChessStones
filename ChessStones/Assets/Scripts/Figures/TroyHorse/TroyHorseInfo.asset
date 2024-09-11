@@ -12,18 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
   m_Name: TroyHorseInfo
   m_EditorClassIdentifier: 
-  Name: "\u0422\u0440\u043E\u044F\u043D\u0441\u043A\u0438\u0439 \u043A\u043E\u043D\u044C"
-  BattleDescription: "\u041C\u043E\u0436\u0435\u0442 \u043F\u043E\u043C\u0435\u0449\u0430\u0442\u044C
-    \u0432\u043D\u0443\u0442\u0440\u044C \u0441\u0435\u0431\u044F \u0434\u043E 3
-    \u0444\u0438\u0433\u0443\u0440. \u0412 \u0441\u0432\u043E\u0439 \u0445\u043E\u0434
-    \u043A\u043E\u043D\u044C \u043C\u043E\u0436\u0435\u0442 \u043B\u0438\u0431\u043E 
-    \u0425\u043E\u0434 \u043A\u043E\u043D\u044F \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044F
-    \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u044B\u043C, \u0435\u0441\u043B\u0438
-    \u043E\u043D \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u043B\u0441\u044F
-    \u043D\u0430 \u0434\u0440\u0443\u0433\u0443\u044E \u043A\u043B\u0435\u0442\u043A\u0443."
-  DetailDescription: "\u042D\u0442\u043E \u043A\u043E\u043D\u0435\u0447\u043D\u043E "
+  Name: FigureInfo/TroyHorse/name
+  BattleDescription: FigureInfo/TroyHorse/battleDesc
+  DetailDescription: FigureInfo/TroyHorse/detailDesc
   Damage: 0
   Health: 5
+  DefaultFigureDamageMode: 0
   teamMats:
   - {fileID: 2100000, guid: 9309a1d4d6111bb448bfa87f0ff07234, type: 2}
   - {fileID: 2100000, guid: 81c4237a99d721c4e934104322cbc8cf, type: 2}
@@ -32,3 +26,4 @@ MonoBehaviour:
   - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   certainSquareMoves: []
   directonSquareMoves: []
+  attackSquares: []

@@ -26,7 +26,7 @@ public class ModelsViewer : MonoBehaviour
 
     private Button _createdButton;
     private ModelViewer_Model _createdModel;
-    private int _selectedIndex;
+    private int _selectedIndex = -1;
 
     private List<ModelViewer_Model> _modelList = new List<ModelViewer_Model>();
 
@@ -38,7 +38,8 @@ public class ModelsViewer : MonoBehaviour
             {
                 _createdButton = Instantiate(_buttonPrefab, _buttonContainer);
 
-                _createdButton.GetComponentInChildren<TMPro.TMP_Text>().text = figure.figureInfo.Name;
+                //_createdButton.GetComponentInChildren<TMPro.TMP_Text>().text = GetLine(figure.figureInfo.Name);
+                _createdButton.GetComponentInChildren<Lean.Localization.LeanLocalizedTextMeshProUGUI>().TranslationName = figure.figureInfo.Name;
                 int buttonIndex = _createdButton.transform.GetSiblingIndex();
                 _createdButton.onClick.AddListener(() => OnSelectFigure(buttonIndex));
 
@@ -61,18 +62,29 @@ public class ModelsViewer : MonoBehaviour
                 _modelList.Add(_createdModel );
             }
         }
+
     }
 
     private void OnSelectFigure(int index)
     {
-        _modelList[_selectedIndex].Model.SetActive(false);
+        if (_selectedIndex != -1) _modelList[_selectedIndex].Model.SetActive(false);
         
         _modelList[index].Model.SetActive(true);
-        _nameText.text = _modelList[index].Name;
-        _shortDescText.text = _modelList[index].BattleDescription;
-        _descText.text = _modelList[index].Description;
+        _nameText.text = GetLine(_modelList[index].Name);
+        _shortDescText.text = GetLine(_modelList[index].BattleDescription);
+        _descText.text = GetLine(_modelList[index].Description);
 
         _selectedIndex = index;
     }
 
+
+    private string GetLine(string leanPhrase)
+    {
+        return Lean.Localization.LeanLocalization.GetTranslationText(leanPhrase);
+    }
+
+    private void OnEnable()
+    {
+        if(_selectedIndex != -1) OnSelectFigure(_selectedIndex);
+    }
 }

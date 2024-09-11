@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 using DG.Tweening;
+using UnityEngine.ProBuilder.MeshOperations;
 
 [System.Serializable]
 public class AvaliableMove
@@ -35,6 +36,7 @@ public class FigureInteract : MonoBehaviour
     public FigureRole role;
     protected int _currentHealth;
     protected int forward = 1;
+    protected bool _didFirstMove;
 
     protected GameFieldManager _field;
 
@@ -58,6 +60,13 @@ public class FigureInteract : MonoBehaviour
 
     [Header("Dotween")]
     [SerializeField] private float _moveDuration = 0.5f;
+    [SerializeField] private float _attackDuration = 0.5f;
+    [SerializeField] private Ease _attackEase;
+    [SerializeField] private Ease _backAttackEase;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioClip _damageSound;
+    [SerializeField] [Range(0,1)] private float _damageSoundVolume = 0.5f;
 
     public GameFieldSquare _currentSquare { get; set; }
     public int CurrentHealth
@@ -72,6 +81,7 @@ public class FigureInteract : MonoBehaviour
 
     private Tweener _moveTweener;
     private Tweener _visualMoveTweener;
+    private Sequence _visualAttackSequence;
 
     private Dictionary<string, int> AdditionalDamage = new Dictionary<string, int>();
     private int _additionalDamage;
@@ -80,7 +90,15 @@ public class FigureInteract : MonoBehaviour
     {
         get
         {
-            return figureInfo.Damage + _additionalDamage;
+            if (figureInfo.DefaultFigureDamageMode)
+            {
+                return 0;
+            }
+            else
+            {
+                return figureInfo.Damage + _additionalDamage;
+            }
+
         }
     }
     public void SetAdditionalDamage(string id, int damage)
@@ -208,36 +226,113 @@ public class FigureInteract : MonoBehaviour
         _outline.enabled = false;
     }
 
-    protected GameFieldSquare findedSquare;
-    protected AvaliableMove createdMove;
+    protected GameFieldSquare _findedSquare;
+    protected AvaliableMove _createdMove;
+    protected bool _endMoveSearch;
+    protected bool _hasAttackSquares;
 
 
     public virtual List<AvaliableMove> GetDefaultMoves()
     {
-
         List<AvaliableMove> result = new List<AvaliableMove>();
+        List<Vector2> certainSquares = new List<Vector2>(figureInfo.certainSquareMoves);
+
+        Debug.Log(certainSquares.Count);
+
+        if (!_didFirstMove) certainSquares.AddRange(figureInfo.additionalFirstMoves);
+
+        Debug.Log(certainSquares.Count);
+
+        _hasAttackSquares = figureInfo.attackSquares.Count > 0;
         
-        foreach(Vector2 pos in figureInfo.certainSquareMoves)
+        foreach(Vector2 pos in certainSquares)
         {
             //Debug.Log($"{(int)(currentSquare.Position.y + pos.y * forward)}   {(int)(currentSquare.Position.x + pos.x)}");
-            findedSquare = _field.GetSquare((int)(_currentSquare.Position.x + pos.y * forward), (int)(_currentSquare.Position.y + pos.x));
+            _findedSquare = _field.GetSquare((int)(_currentSquare.Position.x + pos.y * forward), (int)(_currentSquare.Position.y + pos.x));
             
-            if (findedSquare != null)
+            if (_findedSquare != null)
             {
-                if (findedSquare.currentFigure != null)
+                if (_findedSquare.currentFigure != null)
                 {
-                    if(findedSquare.currentFigure.playerId == playerId)
+                    if(_findedSquare.currentFigure.playerId == playerId)
                     {
                         continue;
                     }
+
+                    if (_hasAttackSquares) break;
                 }
 
-                createdMove = new AvaliableMove(findedSquare);
-                if(findedSquare.currentFigure != null) createdMove.damageFigures.Add(findedSquare.currentFigure);
+                _createdMove = new AvaliableMove(_findedSquare);
+                if(_findedSquare.currentFigure != null && !_hasAttackSquares) _createdMove.damageFigures.Add(_findedSquare.currentFigure);
 
-                result.Add(createdMove);
+                result.Add(_createdMove);
             }
+        }
 
+        foreach (Vector2 pos in figureInfo.directonSquareMoves)
+        {
+            _findedSquare = _currentSquare;
+
+            while (_findedSquare != null)
+            {
+                _findedSquare = _field.GetSquare((int)(_findedSquare.Position.x + pos.y * forward), (int)(_findedSquare.Position.y + pos.x));
+
+                if(_findedSquare != null)
+                {
+
+                    _createdMove = new AvaliableMove(_findedSquare);
+                    _endMoveSearch = false;
+
+                    if (_findedSquare.currentFigure != null)
+                    {
+                        if (_findedSquare.currentFigure.playerId != playerId && !_hasAttackSquares)
+                        {
+                            _createdMove.damageFigures.Add(_findedSquare.currentFigure);
+                            _endMoveSearch = true;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+
+                    if (!result.Contains(_createdMove))
+                    {
+                        result.Add(_createdMove);
+                    }
+
+                    if (_endMoveSearch) break;
+
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        foreach (Vector2 pos in figureInfo.attackSquares)
+        {
+            _findedSquare = _field.GetSquare((int)(_currentSquare.Position.x + pos.y * forward), (int)(_currentSquare.Position.y + pos.x));
+
+            if (_findedSquare != null)
+            {
+                if (_findedSquare.currentFigure != null)
+                {
+                    if (_findedSquare.currentFigure.playerId == playerId)
+                    {
+                        continue;
+                    }
+
+                    _createdMove = new AvaliableMove(_findedSquare);
+
+                    _createdMove.damageFigures.Add(_findedSquare.currentFigure);
+
+                    result.Add(_createdMove);
+
+                }                
+            }
         }
 
         return result;
@@ -291,22 +386,49 @@ public class FigureInteract : MonoBehaviour
 
     public virtual void Attack(FigureInteract enemy, List<string> flags)
     {
-        enemy.TakeDamage(figureInfo.Damage + _additionalDamage);
-        TakeDamage(enemy.figureInfo.Damage);
+        if (figureInfo.DefaultFigureDamageMode)
+        {
+            enemy.TakeDamage(999);
+        }
+        else
+        {
+            enemy.TakeDamage(TotalDamage);
+            TakeDamage(enemy.TotalDamage, true);
+        }
+
+    }
+
+    protected void AnimateAttack(Vector3 attackPoint)
+    {
+        if (_visualAttackSequence == null)
+        {
+            _visualAttackSequence.Append(_visual.transform.DOLocalMove(attackPoint, _moveDuration).SetAutoKill(false).SetEase(_attackEase));
+            _visualAttackSequence.Append(_visual.transform.DOLocalMove(attackPoint, _moveDuration).SetAutoKill(false).SetEase(_attackEase));
+        }
     }
 
     public virtual void EndOfActions()
     {
+        if (!_didFirstMove) _didFirstMove = true;
+
         GameManager.Instance.PassTurn();
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, bool knockbackDamage = false)
     {
-        CurrentHealth -= damage;
+        if(damage != 0) EffectsSystem.Instance.PlayDamage(transform.position, damage);
+
+        if (figureInfo.DefaultFigureDamageMode)
+            CurrentHealth = 0;
+        else
+            CurrentHealth -= damage;
+
         if(CurrentHealth < 0)
             CurrentHealth = 0;
         if (CurrentHealth == 0)
             Death();
+
+        if(!knockbackDamage) SoundsSystem.Instance.Play(_damageSound, _damageSoundVolume);
     }
 
     public virtual void Death()
@@ -323,6 +445,8 @@ public class FigureInteract : MonoBehaviour
 
         _outline.enabled = false;
         if(interactCollider) interactCollider.enabled = false;
+
+        if(role == FigureRole.King) _field.KingDeath(this);
     }
 
     public virtual void OnGlobalEndOfTurn()

@@ -354,10 +354,12 @@ m_ResolvedPackages:
     - 2.3.1
     - 2.4.3
     - 2.4.4
+    - 2.5.1
     compatible:
     - 2.3.1
     - 2.4.3
     - 2.4.4
+    - 2.5.1
     recommended: 2.3.1
     deprecated: []
   dependencies: []
@@ -571,27 +573,31 @@ m_ResolvedPackages:
     - 5.1.1
     - 5.2.0
     - 5.2.2
+    - 5.2.3
     - 6.0.1-pre.1
     - 6.0.1-pre.2
     - 6.0.1
+    - 6.0.2
+    - 6.0.3
     compatible:
     - 5.2.2
-    recommended: 5.2.2
+    - 5.2.3
+    recommended: 5.2.3
     deprecated: []
   dependencies:
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
   - name: com.unity.settings-manager
     version: 1.0.3
-  - name: com.unity.modules.physics
-    version: 1.0.0
+  resolvedDependencies:
   - name: com.unity.modules.imgui
     version: 1.0.0
-  resolvedDependencies:
+  - name: com.unity.modules.physics
+    version: 1.0.0
   - name: com.unity.settings-manager
     version: 2.0.1
-  - name: com.unity.modules.physics
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
   keywords:
   - 3d
   - model
@@ -954,18 +960,18 @@ m_ResolvedPackages:
     recommended: 1.7.6
     deprecated: []
   dependencies:
+  - name: com.unity.modules.audio
+    version: 1.0.0
   - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.modules.audio
-    version: 1.0.0
   - name: com.unity.modules.particlesystem
     version: 1.0.0
   resolvedDependencies:
-  - name: com.unity.modules.director
-    version: 1.0.0
   - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0

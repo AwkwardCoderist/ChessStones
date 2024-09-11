@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 4530011650391015418}
   - component: {fileID: 2604372575107585565}
   - component: {fileID: 3039909757618079553}
+  - component: {fileID: 8080431430744043214}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -437,6 +438,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8080431430744043214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493574266654282230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: GameUI/Actions/RookLogsTurn
+  FallbackText: 
 --- !u!1 &4021278986257736468
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +463,7 @@ GameObject:
   - component: {fileID: 3275475302123501666}
   - component: {fileID: 1817115844349922058}
   - component: {fileID: 2977534120986009377}
+  - component: {fileID: 2786560648663715800}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -571,6 +587,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2786560648663715800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021278986257736468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: GameUI/Actions/RookLogsFire
+  FallbackText: 
 --- !u!1 &6932315715579915449
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +834,10 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0.25, z: 0}
   interactCollider: {fileID: 6018967119830707807}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 477d71f1a3672ed45863c927fc5f3b4b, type: 3}
   buttonsObj: {fileID: 1397833818078182956}
   shootEffects:
   - {fileID: 1780539102430711589}
@@ -818,7 +852,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 668109182005606535}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704566043674108539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

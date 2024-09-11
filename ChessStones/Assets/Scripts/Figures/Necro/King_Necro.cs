@@ -33,21 +33,21 @@ public class King_Necro : FigureInteract
         {
             if (square != null)
             {
-                createdMove = new AvaliableMove(square);
+                _createdMove = new AvaliableMove(square);
 
                 if (square.currentFigure != null)
                 {
-                    createdMove.damageFigures.Add(square.currentFigure);
+                    _createdMove.damageFigures.Add(square.currentFigure);
 
                     if (square.currentFigure.playerId == playerId)
                     {
-                        createdMove.flags.Add("POWER");
+                        _createdMove.flags.Add("POWER");
                     }
                 }
 
-                createdMove.moveToSquare = true;
+                _createdMove.moveToSquare = true;
 
-                result.Add(createdMove);
+                result.Add(_createdMove);
 
             }
 
@@ -64,6 +64,8 @@ public class King_Necro : FigureInteract
         {
             additionalDamage += 1;
 
+            SetAdditionalDamage("eatAlly", additionalDamage);
+
             int addHealth = enemy.CurrentHealth / 2;
             if(addHealth == 0) addHealth = 1;
             CurrentHealth += addHealth;
@@ -72,8 +74,7 @@ public class King_Necro : FigureInteract
         }
         else
         {
-            enemy.TakeDamage(figureInfo.Damage + additionalDamage);
-            TakeDamage(enemy.figureInfo.Damage);
+            base.Attack(enemy, flags);
         }
     }
 

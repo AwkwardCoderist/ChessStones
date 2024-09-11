@@ -393,6 +393,10 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0.05, z: 0}
   interactCollider: {fileID: 7285873881170886189}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 384a83857e0099d4f9a18621c5d8f8a7, type: 3}
   buttonsObj: {fileID: 7205666307343107987}
   ammoAmount: 5
   genericBullet: {fileID: 499619187334743102}
@@ -412,7 +416,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4602305840213502197}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374646241458663945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

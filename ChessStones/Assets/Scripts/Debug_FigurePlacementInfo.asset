@@ -23,13 +23,13 @@ MonoBehaviour:
     - figureRole: 0
       startPosition: {x: 3, y: 1}
     - figureRole: 0
-      startPosition: {x: 4, y: 1}
+      startPosition: {x: 4, y: 2}
     - figureRole: 0
       startPosition: {x: 5, y: 1}
     - figureRole: 0
       startPosition: {x: 6, y: 1}
     - figureRole: 0
-      startPosition: {x: 7, y: 1}
+      startPosition: {x: 3, y: 6}
     - figureRole: 3
       startPosition: {x: 3, y: 2}
     - figureRole: 1
@@ -54,11 +54,11 @@ MonoBehaviour:
     - figureRole: 0
       startPosition: {x: 2, y: 6}
     - figureRole: 0
-      startPosition: {x: 5, y: 3}
+      startPosition: {x: 4, y: 1}
     - figureRole: 0
-      startPosition: {x: 4, y: 6}
+      startPosition: {x: 6, y: 2}
     - figureRole: 0
-      startPosition: {x: 5, y: 6}
+      startPosition: {x: 6, y: 4}
     - figureRole: 0
       startPosition: {x: 6, y: 6}
     - figureRole: 0

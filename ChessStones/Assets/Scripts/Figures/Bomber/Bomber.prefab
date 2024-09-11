@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4928736499154493838}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7542251766415539058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -5050,10 +5050,15 @@ MonoBehaviour:
   enemySkinnedMeshes: []
   indexTeamMeshes: []
   indexEnemyMeshes: []
-  selectOffset: {x: -0.275, y: 1.762, z: 0.349}
-  unselectOffset: {x: -0.275, y: 0.762, z: 0.349}
+  selectOffset: {x: 0, y: 1, z: 0}
+  unselectOffset: {x: 0, y: 0, z: 0}
   interactCollider: {fileID: 2207978559711360854}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 39c42dae8ff64af4db8cf6f4dd4377f3, type: 3}
+  _damageSoundVolume: 0.5
   blowDamage: 3
   blowEffect: {fileID: 4505712072233287974}
 --- !u!1001 &6987535779965270340

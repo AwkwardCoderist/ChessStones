@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 8329157698315648471}
   - component: {fileID: 7982572511789954342}
   - component: {fileID: 2644630340260389580}
+  - component: {fileID: 1799032457159896729}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -236,6 +237,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1799032457159896729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761205236496209061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: GameUI/Actions/CookClericFeed
+  FallbackText: 
 --- !u!1 &3024843088771063341
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +557,10 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0, z: 0}
   interactCollider: {fileID: 6290530315532733535}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 45f8b4bee75ecc04ab6ed4f5f2739e2f, type: 3}
   _buttonCanvas: {fileID: 1241292171142681914}
   _healEffect: {fileID: 797006636529706242}
   _healEffectDelay: 0.1

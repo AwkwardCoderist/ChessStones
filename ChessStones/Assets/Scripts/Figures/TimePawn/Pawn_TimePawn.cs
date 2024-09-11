@@ -53,14 +53,14 @@ public class Pawn_TimePawn : FigureInteract
     {
         base.SelectFigure();
         _clockObject.SetActive(true);
-        TimeLine.enabled = true;
+        TimeLine.gameObject.SetActive(true);
     }
 
     public override void DeselectFigure()
     {
         base.DeselectFigure();
         _clockObject.SetActive(false);
-        TimeLine.enabled = false;
+        TimeLine.gameObject.SetActive(false);
     }
 
     public override void Move(GameFieldSquare square, List<string> flags)

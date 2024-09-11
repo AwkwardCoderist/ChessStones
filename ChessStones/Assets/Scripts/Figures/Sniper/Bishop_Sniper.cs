@@ -72,20 +72,20 @@ public class Bishop_Sniper : FigureInteract
 
                     if (i == 0) //if in close combat
                     {
-                        createdMove = new AvaliableMove(selectedSquare);
+                        _createdMove = new AvaliableMove(selectedSquare);
 
                         if (selectedFigure != null)
                         {
                             if (selectedFigure.playerId != playerId) //if enemy
                             {
-                                createdMove.damageFigures.Add(selectedFigure);
-                                result.Add(createdMove);
+                                _createdMove.damageFigures.Add(selectedFigure);
+                                result.Add(_createdMove);
                                 continue;
                             }
                         }
                         else
                         {
-                            result.Add(createdMove);
+                            result.Add(_createdMove);
                             continue;
                         }
                     }
@@ -95,11 +95,11 @@ public class Bishop_Sniper : FigureInteract
                         {
                             if (selectedFigure.playerId != playerId) //if enemy
                             {
-                                createdMove = new AvaliableMove(selectedSquare);
-                                createdMove.damageFigures.Add(selectedFigure);
-                                createdMove.moveToSquare = false;
-                                createdMove.flags.Add("FAR SHOT");
-                                result.Add(createdMove);
+                                _createdMove = new AvaliableMove(selectedSquare);
+                                _createdMove.damageFigures.Add(selectedFigure);
+                                _createdMove.moveToSquare = false;
+                                _createdMove.flags.Add("FAR SHOT");
+                                result.Add(_createdMove);
                                 continue;
                             }
                         }

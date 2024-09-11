@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ public class GameFieldManager : MonoBehaviour
     private List<List<GameFieldSquare>> _fieldSquares = new List<List<GameFieldSquare>>();
 
     private List<List<FigureInteract>> _playersFigures = new List<List<FigureInteract>>();
+
+    private List<int> _activePlayers = new List<int>();
 
     private List<List<Pawn_TimePawn>> _trackedTimepawns = new List<List<Pawn_TimePawn>>();
     private List<LineRenderer> _timeLineRenderers = new List<LineRenderer>();
@@ -161,6 +164,8 @@ public class GameFieldManager : MonoBehaviour
     public void PlaceFigures()
     {
         ClearFigures();
+        _activePlayers.Clear();
+        _trackedTimepawns.Clear();
 
         FigureInteract figure;
         Vector2 spawnPos = Vector2.zero;
@@ -168,7 +173,9 @@ public class GameFieldManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.amountOfTeams; i++)
         {
             _playersFigures.Add(new List<FigureInteract>());
-            
+            _activePlayers.Add(i);
+
+
             for (int k = 0; k < figuresPlacements.figuresPlacement[i].placements.Count; k++)
             {
                 spawnPos = figuresPlacements.figuresPlacement[i].placements[k].startPosition;
@@ -195,6 +202,17 @@ public class GameFieldManager : MonoBehaviour
         }
 
         _playersFigures.Clear();
+        ClearTimePawns();
+    }
+
+    public void KingDeath(FigureInteract figure)
+    {
+        _activePlayers.Remove(figure.playerId);
+
+        if (_activePlayers.Count == 1)
+        {
+            GameManager.Instance.PlayerWin(_activePlayers[0]);
+        }
     }
 
     private List<Vector3> _timelinePoses = new List<Vector3>();
@@ -202,11 +220,13 @@ public class GameFieldManager : MonoBehaviour
     {
         for(int i = 0; i < _timeLineRenderers.Count; i++)
         {
-            if (!_timeLineRenderers[i].enabled) continue;
+            if (!_timeLineRenderers[i].enabled || _trackedTimepawns.Count == 0) continue;
 
             _timelinePoses.Clear();
 
-            for (int k = 0; k < _trackedTimepawns[i].Count; k++)
+            int k = 0;
+
+            for (k = 0; k < _trackedTimepawns[i].Count; k++)
             {
                 _timelinePoses.Add(_trackedTimepawns[i][k].transform.position + _timeLineOffset);
             }
@@ -214,27 +234,56 @@ public class GameFieldManager : MonoBehaviour
             _timeLineRenderers[i].positionCount = _timelinePoses.Count;
             _timeLineRenderers[i].SetPositions(_timelinePoses.ToArray());
 
+            Transform child;
+
+            for (k = 0; k < _timelinePoses.Count; k++)
+            {
+                child = _timeLineRenderers[i].transform.GetChild(k);
+                child.gameObject.SetActive(true);
+                child.position = _timelinePoses[k];
+
+            }
+
+            for (; k < _timeLineRenderers[i].transform.childCount; k++)
+            {
+                child = _timeLineRenderers[i].transform.GetChild(k);
+                child.gameObject.SetActive(false);
+            }
+
         }
     }
 
     private LineRenderer _createdLineRenderer;
     public LineRenderer AddTimePawn(Pawn_TimePawn timepawn, int teamIndex)
     {
-        if (teamIndex >= _trackedTimepawns.Count)
+        while(teamIndex >= _trackedTimepawns.Count)
         {
             _trackedTimepawns.Add(new List<Pawn_TimePawn>());
         }
 
+        Debug.Log(_trackedTimepawns.Count);
+        Debug.Log(teamIndex);
+        Debug.Log(_trackedTimepawns[teamIndex].Count);
         _trackedTimepawns[teamIndex].Add(timepawn);
 
-        if (teamIndex >= _timeLineRenderers.Count)
+        while (teamIndex >= _timeLineRenderers.Count)
         {
             _createdLineRenderer = Instantiate(_timeLinePrefab);
 
-            _createdLineRenderer.enabled = false;
+            _createdLineRenderer.gameObject.SetActive(false);
 
-            _timeLineRenderers.Add(_createdLineRenderer);
+            _timeLineRenderers.Add(_createdLineRenderer); 
+            
+            
         }
+
+        if (_timeLineRenderers[teamIndex].transform.childCount < _trackedTimepawns[teamIndex].Count)
+        {
+            TextMeshPro text = Instantiate(_timeLineRenderers[teamIndex].transform.GetChild(0), _timeLineRenderers[teamIndex].transform).GetComponent<TextMeshPro>();
+            text.text = text.transform.GetSiblingIndex().ToString();
+        }
+
+        UpdateTimelineCounters(_timeLineRenderers[teamIndex]);
 
         return _timeLineRenderers[teamIndex];
     }
@@ -242,6 +291,38 @@ public class GameFieldManager : MonoBehaviour
     public void RemoveTimePawn(Pawn_TimePawn timepawn, int teamIndex)
     {
         _trackedTimepawns[teamIndex].Remove(timepawn);
+        UpdateTimelineCounters(_timeLineRenderers[teamIndex]);
+    }
+
+    private void UpdateTimelineCounters(LineRenderer timeline)
+    {
+        TextMeshPro[] texts = timeline.transform.GetComponentsInChildren<TextMeshPro>();
+
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].text = i.ToString();
+            texts[i].gameObject.SetActive(true);
+        }
+
+        TextMeshPro text;
+
+        for (int k = 0; k < timeline.transform.childCount; k++)
+        {
+            text = timeline.transform.GetChild(k).GetComponent<TextMeshPro>();
+            Debug.Log(k * 1f / timeline.transform.childCount);
+            text.color = timeline.colorGradient.Evaluate(k * 1f / timeline.transform.childCount);
+            text.text = (k + 1).ToString();
+        }
+    }
+
+    private void ClearTimePawns()
+    {
+        foreach(List<Pawn_TimePawn> list in _trackedTimepawns)
+        {
+            list.Clear();
+        }
+
+        _trackedTimepawns.Clear();
     }
 
 }

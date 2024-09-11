@@ -292,6 +292,10 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0.05, z: 0}
   interactCollider: {fileID: 429497680741914071}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 298eb401632c6da4590c30c346712504, type: 3}
   _clockObject: {fileID: 4880712447786291054}
   _nextPawn: {fileID: 0}
   _pawnOrder: 0

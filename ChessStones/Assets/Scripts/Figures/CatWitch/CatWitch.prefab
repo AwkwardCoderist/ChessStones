@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 7446042502408208248}
   - component: {fileID: 7603401810004283272}
   - component: {fileID: 3098511243392765480}
+  - component: {fileID: 4540856115099744048}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -405,6 +406,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4540856115099744048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170056395406263796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: GameUI/Actions/CatControl
+  FallbackText: 
 --- !u!1001 &2480783944716863983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,6 +494,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3228260414225226492, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3175362434060593676}
+    - targetCorrespondingSourceObject: {fileID: 3228260414225226492, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7845989807628570182}
   m_SourcePrefab: {fileID: 100100000, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
 --- !u!1 &1054007672217457427 stripped
 GameObject:
@@ -518,13 +536,31 @@ MonoBehaviour:
   unselectOffset: {x: 0, y: 0.04, z: 0}
   interactCollider: {fileID: 8696363661906304823}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: c1343bdf366728e45a0fe3d62b900ca9, type: 3}
+  _damageSoundVolume: 0.5
   _buttonCanvas: {fileID: 5588648277081815646}
   _controlEffect: {fileID: 6649345836099318595}
   _delayToControl: 5
   _controlButton: {fileID: 6596582492703720269}
-  _readyText: "\u041E\u0447\u0430\u0440\u043E\u0432\u0430\u0442\u044C \u0432\u0440\u0430\u0433\u0430"
-  _notReadyText: "\u0421\u043E\u0431\u0438\u0440\u0430\u0435\u0442\u0441\u044F \u0441
-    \u043C\u044B\u0441\u043B\u044F\u043C\u0438"
+  _tokenTurns: CatWitchRemainTurns
+  _readyText: GameUI/Actions/CatControl
+  _notReadyText: GameUI/Actions/CatRemainTime
+--- !u!114 &7845989807628570182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054007672217457427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b00b1c461a103b4898dcc53ee709d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 
 --- !u!4 &4963854161757646390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7390025277075613657, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
@@ -536,7 +572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2480783944716863983}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054007672217457427}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

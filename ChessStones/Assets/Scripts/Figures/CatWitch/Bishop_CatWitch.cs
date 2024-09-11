@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,10 @@ public class Bishop_CatWitch : FigureInteract
     [SerializeField] private ParticleSystem _controlEffect;
     [SerializeField] private int _delayToControl = 2;
     [SerializeField] private Button _controlButton;
+    [SerializeField] private string _tokenTurns;
+    [LeanTranslationName]
     [SerializeField] private string _readyText;
+    [LeanTranslationName]
     [SerializeField] private string _notReadyText;
 
     private int _passedTurns = 0;
@@ -46,7 +50,6 @@ public class Bishop_CatWitch : FigureInteract
     }
 
     private List<AvaliableMove> _controlMoves = new List<AvaliableMove>();
-    private AvaliableMove _createdMove;
     private void EnableSelectFigure()
     {
         _selectingFigure = true;
@@ -129,13 +132,14 @@ public class Bishop_CatWitch : FigureInteract
         if (_passedTurns < _delayToControl)
         {
             _controlButton.interactable = false;
-            _controlButton.GetComponentInChildren<TMPro.TMP_Text>().text = _notReadyText + "(" + (_delayToControl - _passedTurns) + " ходов\\а)";
+            LeanLocalization.SetToken(_tokenTurns, (_delayToControl - _passedTurns).ToString());
+            _controlButton.GetComponentInChildren<LeanLocalizedTextMeshProUGUI>().TranslationName = _notReadyText;
             _passedTurns++;
         }
         else
         {
             _controlButton.interactable = true;
-            _controlButton.GetComponentInChildren<TMPro.TMP_Text>().text = _readyText;
+            _controlButton.GetComponentInChildren<LeanLocalizedTextMeshProUGUI>().TranslationName = _readyText;
         }
     }
 

@@ -12,15 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
   m_Name: Queen
   m_EditorClassIdentifier: 
-  Name: "\u041A\u043E\u0440\u043E\u043B\u0435\u0432\u0430"
-  BattleDescription: 
-  DetailDescription: 
+  Name: FigureInfo/Queen/name
+  BattleDescription: FigureInfo/Queen/battleDesc
+  DetailDescription: FigureInfo/Queen/detailDesc
   Damage: 3
   Health: 1
+  DefaultFigureDamageMode: 1
   teamMats: []
   changeTeamMesh: 1
   teamMeshes:
   - {fileID: 4300016, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
   - {fileID: 4300006, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
   certainSquareMoves: []
-  directonSquareMoves: []
+  directonSquareMoves:
+  - {x: 1, y: 1}
+  - {x: 0, y: 1}
+  - {x: -1, y: 1}
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 1, y: -1}
+  - {x: 0, y: -1}
+  - {x: -1, y: -1}
+  attackSquares: []

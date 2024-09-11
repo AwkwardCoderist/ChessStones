@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419338123113192702, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8419338123113192702, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -148,23 +148,34 @@ MonoBehaviour:
   _outline: {fileID: 6189179563752665950}
   playerId: 0
   role: 0
-  teamMeshes: []
+  teamMeshes:
+  - {fileID: 5580345468802821171}
   teamSkinnedMeshes: []
   enemyMeshes: []
   enemySkinnedMeshes: []
   indexTeamMeshes: []
   indexEnemyMeshes: []
-  selectOffset: {x: 0, y: 0, z: 0}
-  unselectOffset: {x: 0, y: 0, z: 0}
+  selectOffset: {x: 0, y: 0.5, z: 0}
+  unselectOffset: {x: 0, y: 0.12, z: 0}
   interactCollider: {fileID: 0}
   _moveDuration: 0.5
+  _attackDuration: 0.5
+  _attackEase: 0
+  _backAttackEase: 0
+  _damageSound: {fileID: 8300000, guid: 3263539bd65aa9645868fc8ed2ecd92b, type: 3}
+  _damageSoundVolume: 0.5
+--- !u!23 &5580345468802821171 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6205050004843074827, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
+  m_PrefabInstance: {fileID: 1976405934196848952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6189179563752665950 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5659327894234810982, guid: d15198feb9266324d8fd1d28fda1c02e, type: 3}
   m_PrefabInstance: {fileID: 1976405934196848952}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4008360932473267140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

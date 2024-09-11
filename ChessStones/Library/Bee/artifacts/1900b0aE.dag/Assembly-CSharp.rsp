@@ -333,6 +333,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/CaseyDeCoder.DoxygenGenerator.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Cinemachine.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/com.unity.cinemachine.editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/CW.Common.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/LeanCommon.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/LeanLocalization.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/LeanLocalization.TMP.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/LeanLocalizationEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
@@ -365,6 +370,7 @@
 "Assets/Krita/Queen_Hataqueen/BillboardObject.cs"
 "Assets/QuickOutline/Scripts/Outline.cs"
 "Assets/Scripts/DebugTest.cs"
+"Assets/Scripts/EffectsSystem.cs"
 "Assets/Scripts/FigureInfo_SO.cs"
 "Assets/Scripts/FigureInteract.cs"
 "Assets/Scripts/FigurePlacement_SO.cs"
@@ -384,7 +390,10 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/ModelRotater.cs"
 "Assets/Scripts/ModelsViewer.cs"
+"Assets/Scripts/MouseClickingSound.cs"
 "Assets/Scripts/SingleUnityLayer.cs"
+"Assets/Scripts/SoundsSystem.cs"
+"Assets/Scripts/SoundSystemPlayer.cs"
 -langversion:9.0
 
 /deterministic

@@ -1,17 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private GameFieldManager field;
-    [SerializeField] private TMPro.TMP_Text currentPlayerText;
+    [SerializeField] private GameFieldManager _field;
+    [SerializeField] private TMPro.TMP_Text _currentPlayerText;
 
-    private FigureInteract selectedFigure;
+    private FigureInteract _selectedFigure;
 
     public int amountOfTeams = 2;
 
@@ -26,13 +27,13 @@ public class GameManager : MonoBehaviour
         set 
         { 
             _currentPlayerId = value; 
-            currentPlayerText.text = "èãðîê " + (_currentPlayerId + 1).ToString();
+            _currentPlayerText.text = (_currentPlayerId + 1).ToString();
         }
     }
 
     public FigureInteract ControllerFigure { get; set; }
 
-    public GameFieldManager FieldManager => field;
+    public GameFieldManager FieldManager => _field;
 
     [Header("Rotate Camera")]
     [SerializeField] private Transform _rotateCenter;
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     [Header("Canvas Components")]
     [SerializeField] private GameObject _processCanvas;
     [SerializeField] private GameObject _mainMenuCanvas;
+    [SerializeField] private GameObject _winnerCanvas;
+    [SerializeField] private TMP_Text _winnerNumberText;
 
     [Header("Figure Info")]
     [SerializeField] private GameObject _infoPanel;
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
 
         _processCanvas.SetActive(false);
         _mainMenuCanvas.SetActive(true);
+        _winnerCanvas.SetActive(false);
     }
 
     private float t;
@@ -87,28 +91,64 @@ public class GameManager : MonoBehaviour
     [ContextMenu("StartGame")]
     public void StartGame()
     {
-        field.SpawnBoard();
+        _field.SpawnBoard();
+        avaliableMoves.Clear();
 
         _processCanvas.SetActive(true);
         _mainMenuCanvas.SetActive(false);
+
+        CurrentPlayerId = 0;
+
+        _elapsedRotateTime = _rotateDuration;
+        _rotateTarget = Quaternion.AngleAxis(0, Vector3.up);
+        _rotateCenter.rotation = _rotateTarget;
+
     }
 
     public void EndGame()
     {
-        field.ClearBoard();
+        DeselectFigure();
+        _field.ClearBoard();
 
         _processCanvas.SetActive(false);
         _mainMenuCanvas.SetActive(true);
+        _winnerCanvas.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void PlayerWin(int playerId)
+    {
+        _winnerNumberText.text = (playerId + 1).ToString();
+        _winnerCanvas.SetActive(true);
+        
     }
 
     public void ShowFigureInfo(FigureInteract figure)
     {
         _infoPanel.SetActive(true);
-        _infoName.text = figure.figureInfo.Name;
+        _infoName.text = GetLine(figure.figureInfo.Name);
         _infoColor.color = _teamColors[figure.playerId];
-        _infoDamage.text = figure.TotalDamage.ToString();
-        _infoHealth.text = figure.CurrentHealth.ToString();
-        _infoDescription.text = figure.figureInfo.BattleDescription;
+
+        if (figure.figureInfo.DefaultFigureDamageMode)
+        {
+            _infoDamage.text = "âˆž";
+            _infoHealth.text = "-âˆž";
+        }
+        else
+        {
+            _infoDamage.text = figure.TotalDamage.ToString();
+            _infoHealth.text = figure.CurrentHealth.ToString();
+        }
+
+        _infoDescription.text = GetLine(figure.figureInfo.BattleDescription);
+    }
+    private string GetLine(string leanPhrase)
+    {
+        return Lean.Localization.LeanLocalization.GetTranslationText(leanPhrase);
     }
 
     public void HideFigureInfo()
@@ -119,10 +159,12 @@ public class GameManager : MonoBehaviour
     public void SelectFigure(FigureInteract figure)
     {
 
-        if (selectedFigure != null) selectedFigure.DeselectFigure();
+        if (_winnerCanvas.activeSelf) return;
 
-        selectedFigure = figure;
-        selectedFigure.SelectFigure();
+        if (_selectedFigure != null) _selectedFigure.DeselectFigure();
+
+        _selectedFigure = figure;
+        _selectedFigure.SelectFigure();
 
         ShowAvaliableMoves();
         
@@ -130,8 +172,8 @@ public class GameManager : MonoBehaviour
 
     public void DeselectFigure()
     {
-        if (selectedFigure != null) selectedFigure.DeselectFigure();
-        selectedFigure = null;
+        if (_selectedFigure != null) _selectedFigure.DeselectFigure();
+        _selectedFigure = null;
 
         HideAvaliableMoves();
     }
@@ -142,9 +184,11 @@ public class GameManager : MonoBehaviour
     {
         if(avaliableMoves.Count > 0) HideAvaliableMoves();
 
-        if (selectedFigure != null)
+        if (_selectedFigure != null)
         {
-            avaliableMoves = selectedFigure.GetDefaultMoves();
+            avaliableMoves = _selectedFigure.GetDefaultMoves();
+
+            Debug.Log($"{avaliableMoves.Count}");
         }
 
         foreach (AvaliableMove move in avaliableMoves)
@@ -179,12 +223,12 @@ public class GameManager : MonoBehaviour
 
     public void SelectSquare(GameFieldSquare square)
     {
-        if (selectedFigure != null)
+        if (_selectedFigure != null)
         {
 
             findedMove = avaliableMoves.Find(x => x.Square == square);
 
-            if (square.currentFigure == selectedFigure || findedMove == null)
+            if (square.currentFigure == _selectedFigure || findedMove == null)
             {
                 DeselectFigure(); 
 
@@ -196,20 +240,20 @@ public class GameManager : MonoBehaviour
                 return;
             }
 
-            FigureInteract prevFigure = selectedFigure;
+            FigureInteract prevFigure = _selectedFigure;
 
             foreach (FigureInteract figure in findedMove.damageFigures)
             {
-                selectedFigure.Attack(figure, findedMove.flags);
+                _selectedFigure.Attack(figure, findedMove.flags);
             }
 
-            if (selectedFigure != prevFigure) return;
+            if (_selectedFigure != prevFigure) return;
 
-            Debug.Log($"{square.currentFigure} {selectedFigure}");
-            if(selectedFigure.CurrentHealth != 0 && square.currentFigure == null && findedMove.moveToSquare)
-                selectedFigure.Move(square, findedMove.flags);
+            Debug.Log($"{square.currentFigure} {_selectedFigure}");
+            if(_selectedFigure.CurrentHealth != 0 && square.currentFigure == null && findedMove.moveToSquare)
+                _selectedFigure.Move(square, findedMove.flags);
 
-            selectedFigure.EndOfActions();
+            _selectedFigure.EndOfActions();
 
         }
     }
@@ -217,7 +261,7 @@ public class GameManager : MonoBehaviour
     private bool _side;
     public void PassTurn()
     {
-        if (selectedFigure != null) DeselectFigure();
+        if (_selectedFigure != null) DeselectFigure();
 
 
         _startRotation = _rotateCenter.rotation * Quaternion.AngleAxis(-0.05f, Vector3.up);
@@ -227,7 +271,7 @@ public class GameManager : MonoBehaviour
         CurrentPlayerId++;
         if (CurrentPlayerId >= amountOfTeams) CurrentPlayerId = 0;
 
-        foreach (List<FigureInteract> figures in field.PlayersFigures)
+        foreach (List<FigureInteract> figures in _field.PlayersFigures)
         {
             foreach (FigureInteract figure in figures)
             {

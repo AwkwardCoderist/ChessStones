@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d43c824fbbcd340866b4da32240788, type: 3}
   m_Name: Rook
   m_EditorClassIdentifier: 
-  Name: "\u041B\u0430\u0434\u044C\u044F"
-  BattleDescription: 
-  DetailDescription: 
+  Name: FigureInfo/Rook/name
+  BattleDescription: FigureInfo/Rook/battleDesc
+  DetailDescription: FigureInfo/Rook/detailDesc
   Damage: 1
   Health: 1
+  DefaultFigureDamageMode: 1
   teamMats: []
   changeTeamMesh: 1
   teamMeshes:
   - {fileID: 4300022, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
   - {fileID: 4300000, guid: 378e8fcb43977431597ceaff6e65628f, type: 3}
   certainSquareMoves: []
-  directonSquareMoves: []
+  directonSquareMoves:
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  attackSquares: []

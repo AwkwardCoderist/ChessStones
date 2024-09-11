@@ -58,8 +58,6 @@ public class Pawn_Bomber : FigureInteract
         SetAtSquare(square);
 
         SaveFiguresInRadius(square);
-
-        GameManager.Instance.PassTurn();
     }
 
 
