@@ -250,8 +250,12 @@ public class GameManager : MonoBehaviour
             if (_selectedFigure != prevFigure) return;
 
             Debug.Log($"{square.currentFigure} {_selectedFigure}");
-            if(_selectedFigure.CurrentHealth != 0 && square.currentFigure == null && findedMove.moveToSquare)
+            if (_selectedFigure.CurrentHealth != 0 && square.currentFigure == null && findedMove.moveToSquare)
+            {
+
                 _selectedFigure.Move(square, findedMove.flags);
+
+            }
 
             _selectedFigure.EndOfActions();
 

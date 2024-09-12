@@ -16,7 +16,7 @@ MonoBehaviour:
   BattleDescription: FigureInfo/Hataqueen/battleDesc
   DetailDescription: FigureInfo/Hataqueen/detailDesc
   Damage: 1
-  Health: 3
+  Health: 5
   DefaultFigureDamageMode: 0
   teamMats: []
   changeTeamMesh: 0
@@ -34,3 +34,4 @@ MonoBehaviour:
   - {x: 1, y: -1}
   directonSquareMoves: []
   attackSquares: []
+  additionalFirstMoves: []

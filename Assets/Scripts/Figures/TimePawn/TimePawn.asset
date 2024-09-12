@@ -15,8 +15,8 @@ MonoBehaviour:
   Name: FigureInfo/TimePawn/name
   BattleDescription: FigureInfo/TimePawn/battleDesc
   DetailDescription: FigureInfo/TimePawn/detailDesc
-  Damage: 1
-  Health: 1
+  Damage: 2
+  Health: 4
   DefaultFigureDamageMode: 0
   teamMats:
   - {fileID: 3825107052621385680, guid: 1bb3ca17361571145ad57311a75434d4, type: 3}
@@ -36,3 +36,4 @@ MonoBehaviour:
   - {x: -2, y: 0}
   directonSquareMoves: []
   attackSquares: []
+  additionalFirstMoves: []

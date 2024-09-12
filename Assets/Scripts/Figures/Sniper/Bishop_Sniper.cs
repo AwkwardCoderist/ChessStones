@@ -17,6 +17,8 @@ public class Bishop_Sniper : FigureInteract
 
     protected override void Start()
     {
+        base.Start();
+
         container = genericBullet.transform.parent;
         GameObject newBullet;
 
@@ -79,12 +81,14 @@ public class Bishop_Sniper : FigureInteract
                             if (selectedFigure.playerId != playerId) //if enemy
                             {
                                 _createdMove.damageFigures.Add(selectedFigure);
+                                _createdMove.moveToSquare = true;
                                 result.Add(_createdMove);
                                 continue;
                             }
                         }
                         else
                         {
+                            _createdMove.moveToSquare = true;
                             result.Add(_createdMove);
                             continue;
                         }
@@ -143,4 +147,5 @@ public class Bishop_Sniper : FigureInteract
 
         GameManager.Instance.PassTurn();
     }
+
 }
