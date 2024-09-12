@@ -1,0 +1,72 @@
+MainMenu/Start,Start game
+MainMenu/Figures,Select Shapes
+MainMenu/Exit,Quitting the game
+GameUI/CurrentPlayer,Player turn #
+GameUI/ReturnToMenu,Return to menu
+GameUI/Damage,Damage
+GameUI/HP,HP
+GameUI/PlayerWin,The player wins
+GameUI/Actions/CatControl,Charm the enemy
+GameUI/Actions/CatRemainTime,Gathering your thoughts ({CatWitchRemainTurns} move)
+GameUI/Actions/CookClericFeed,Feed allies
+GameUI/Actions/RookLogsTurn,Right steering wheel!
+GameUI/Actions/RookLogsFire,Swim!
+FigureMenu/Player1,Player 1
+FigureMenu/Player2,Player 2
+FigureClass/Pawn,First
+FigureClass/Knight,A horse
+FigureClass/Bishop,An elephant
+FigureClass/Rook,Rook
+FigureClass/Queen,Queen
+FigureClass/King,King
+FigureInfo/Bomber/name,A bomb
+FigureInfo/Bomber/battleDesc,Explodes if an enemy piece ends its move by entering the area around the bomb. The explosion deals 3 damage.
+FigureInfo/Bomber/detailDesc,"The model was blatantly stolen from Sketchfab from user giga. Originally she was supposed to have legs, but who cares?"
+FigureInfo/CatWitch/name,Sorceress:3
+FigureInfo/CatWitch/battleDesc,"Moves diagonally 1 square. Can control any enemy piece, except another Sorceress, once every 5 moves: 3"
+FigureInfo/CatWitch/detailDesc,"Oh yes, the most labor-intensive model! I still had to reduce it from 2 million tris to 20 thousand. She lost her eye when she misjudged her jump over a spiked fence. Unconsciously hisses when irritated."
+FigureInfo/Checker/name,Checkers
+FigureInfo/Checker/battleDesc,Can move diagonally 1 square. Attacks pieces by stepping over them diagonally.
+FigureInfo/Checker/detailDesc,"It would be possible to create combos by jumping over several figures in a row, if I didn’t have the trouble to code it =)"
+FigureInfo/CookCleric/name,Cook-cleric
+FigureInfo/CookCleric/battleDesc,"Moves diagonally 2 squares. Instead of a move, he can feed allied figures in adjacent cells, increasing their health by 2 units. You can feed a figure only once per game."
+FigureInfo/CookCleric/detailDesc,"Initially it was just a cleric, but I wanted something unique. Apparently the subconscious suggested Dungeon Meshi, so it came up. And yes, definitely watch/read Dungeon Meshi."
+FigureInfo/Bishop/name,An elephant
+FigureInfo/Bishop/battleDesc,Walks diagonally.
+FigureInfo/Bishop/detailDesc,"In general, in the English version the figure is called Bishop. Translated - 'bishop'. The name of the Bishop piece is most likely taken from the Indian version of chess."
+FigureInfo/King/name,King
+FigureInfo/King/battleDesc,Moves 1 square around itself.
+FigureInfo/King/detailDesc,"I did not implement the implementation of blocking moves during check, so if your king is eaten, your problems. Should have watched more closely"
+FigureInfo/Knight/name,A horse
+FigureInfo/Knight/battleDesc,Walks in L-shaped trajectories.
+FigureInfo/Knight/detailDesc,The horses are cool.
+FigureInfo/Pawn/name,First
+FigureInfo/Pawn/battleDesc,Moves 1 square ahead of himself. On the first move you can move 2 cells. Attacks diagonally in front of itself.
+FigureInfo/Pawn/detailDesc,"The behavior of this figure greatly spoiled my nerves when writing code. She has only 3 unique features: <br>does not attack in the area where she can go,<br>moves 2 cells at the beginning of the turn,<br>can transform into other pieces upon reaching the enemy side of the field.<br>The last point is by the way. didn't implement it - go to hell.<br>"
+FigureInfo/Queen/name,Queen
+FigureInfo/Queen/battleDesc,It goes in all directions.
+FigureInfo/Queen/detailDesc,"Another name, Queen, is borrowed from Persian فرزین‎(Yeah... Persian is not supported...). Which can be translated as 'vizier', 'adviser'."
+FigureInfo/Rook/name,Rook
+FigureInfo/Rook/battleDesc,Walks horizontally and vertically.
+FigureInfo/Rook/detailDesc,"Rook in English is Rook, which comes from the Persian رخ, which can be translated as 'chariot'. Who knows why the Old Slavs decided to call the chariot a rook."
+FigureInfo/Dr. Korner/name,Dr. Grains™
+FigureInfo/Dr. Korner/battleDesc,They don't do anything. It's just a pack of bread.
+FigureInfo/Dr. Korner/detailDesc,"Ahahahahaha, what are you forgetting here, Dr. caramel breads. Körner™))))"
+FigureInfo/Hataqueen/name,Standard bearer
+FigureInfo/Hataqueen/battleDesc,Increases the damage of all pawns by 1 + the number of dead pawns.
+FigureInfo/Hataqueen/detailDesc,"I spent a lot of time fiddling with the shader to switch colors to another. I wanted versatility, but it turned out simpler."
+FigureInfo/Necro/name,Necromancer
+FigureInfo/Necro/battleDesc,"Can kill allied figures, increasing health by half the health of the killed figure (at least 1) and damage by 1."
+FigureInfo/Necro/detailDesc,"Ultra cool guy. At first I just studied magic, and when I realized that during military conflicts you can extend your life at the expense of others, you completely lost your belt."
+FigureInfo/RookOnLogs/name,Rook-on-logs
+FigureInfo/RookOnLogs/battleDesc,"Can only move along one line. Instead of moving, you can shoot from the side cannons - damage to enemy pieces on the sides of the rook at a distance of 2 cells, or turn around to be able to move along another line."
+FigureInfo/RookOnLogs/detailDesc,"The first model made for the game. Usually, dragging ships on logs was used to simply launch them into the water. Apparently this ship got lost."
+FigureInfo/Sniper/name,Sniper
+FigureInfo/Sniper/battleDesc,Walks and attacks 1 square. Can attack enemies remotely by wasting ammo. Ammo is not restored during the game.
+FigureInfo/Sniper/detailDesc,Design taken from the Epic Anime Chess video by Creibis.
+FigureInfo/TimePawn/name,Pawn of Time
+FigureInfo/TimePawn/battleDesc,"Moves on 2 in all directions. <br>When one of the pawns dies, all subsequent ones in the line also die."
+FigureInfo/TimePawn/detailDesc,"A mysterious time traveler who tries to prevent terrible events by going back in time each time. In fact, under the cape and spherical helmet there is a tired man. He hates his fate."
+FigureInfo/TroyHorse/name,Trojan horse
+FigureInfo/TroyHorse/battleDesc,"Can place up to 3 figures inside. On its turn, the knight can either insert or remove pieces from itself. The knight's move is considered completed if it moves to another square."
+FigureInfo/TroyHorse/detailDesc,"This is of course not an exact copy from the famous film, but it breaks the balance of the game, be healthy"

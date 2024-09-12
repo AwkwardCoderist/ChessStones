@@ -1,0 +1,72 @@
+MainMenu/Start,Начать игру
+MainMenu/Figures,Выбрать фигуры
+MainMenu/Exit,Выход из игры
+GameUI/CurrentPlayer,Ход игрока #
+GameUI/ReturnToMenu,Вернуться в меню
+GameUI/Damage,Урон
+GameUI/HP,ОЗ
+GameUI/PlayerWin,Победил игрок
+GameUI/Actions/CatControl,Очаровать врага
+GameUI/Actions/CatRemainTime,Собирается с мыслями ({CatWitchRemainTurns} ход)
+GameUI/Actions/CookClericFeed,Накормить союзников
+GameUI/Actions/RookLogsTurn,Право руля!
+GameUI/Actions/RookLogsFire,Пли!
+FigureMenu/Player1,Игрок 1
+FigureMenu/Player2,Игрок 2
+FigureClass/Pawn,Пешка
+FigureClass/Knight,Конь
+FigureClass/Bishop,Слон
+FigureClass/Rook,Ладья
+FigureClass/Queen,Королева
+FigureClass/King,Король
+FigureInfo/Bomber/name,Бомба
+FigureInfo/Bomber/battleDesc,Взрывается если вражеская фигура завершает ход, зайдя в область вокруг бомбы. Взрыв наносит 3 урона.
+FigureInfo/Bomber/detailDesc,Моделька нагло стащена с Sketchfab у юзера giga. Изначально у неё должны были быть ножки, но кому не пофиг?
+FigureInfo/CatWitch/name,КолдуНя :3
+FigureInfo/CatWitch/battleDesc,Ходит по диагонали на 1 клетку. Может раз в 5 ходов управлять любой вражеской фигурой, кроме другой КолдуНьи :3
+FigureInfo/CatWitch/detailDesc,О да, самая трудозатратная модель! Мне её ещё пришлось ужимать с 2 миллионов трисов до 20 тысяч. Глаз потеряла, не рассчитав прыжок через шипастый забор. Неосознанно шипит, когда раздражена.
+FigureInfo/Checker/name,Шашка
+FigureInfo/Checker/battleDesc,Может ходить по диагонали на 1 клетку. Атакует фигуры перешагивая их по диагонали. 
+FigureInfo/Checker/detailDesc,Можно было бы творить комбо, прыгая через несколько фигур подряд, если бы мне не было бы влом это кодить =)
+FigureInfo/CookCleric/name,Повар-клирик
+FigureInfo/CookCleric/battleDesc,Ходит по диагонали на 2 клетки. Может вместо хода накормить союзные фигуры в соседних клетках, повысив их здоровье на 2 единицы. Накормить фигуру можно только 1 раз за игру.
+FigureInfo/CookCleric/detailDesc,Изначально это был просто клирик, но мне захотелось уникальности. Видимо подсознание подкинуло Dungeon Meshi, вот и придумалось. И да, обязательно посмотрите/прочтите Dungeon Meshi.
+FigureInfo/Bishop/name,Слон
+FigureInfo/Bishop/battleDesc,Ходит по диагонали.
+FigureInfo/Bishop/detailDesc,Вообще в английском варианте фигура называется Bishop. В переводе - 'епископ'. Название фигуры Слон скорее всего взято с Индийского варианта шахмат.
+FigureInfo/King/name,Король
+FigureInfo/King/battleDesc,Ходит на 1 клетку вокруг себя.
+FigureInfo/King/detailDesc,Я не сделал реализацию блокировки ходов при шахе, так что если вашего короля съели - ваши проблемы. Внимательнее следить надо было
+FigureInfo/Knight/name,Конь
+FigureInfo/Knight/battleDesc,Ходит Г-образными траекториями.
+FigureInfo/Knight/detailDesc,Лошадки прикольные.
+FigureInfo/Pawn/name,Пешка
+FigureInfo/Pawn/battleDesc,Ходит на 1 клетку впереди себя. В первый ход можно на 2 клетки. Атакует по диагональным клеткам впереди себя.
+FigureInfo/Pawn/detailDesc,Поведение этой фигуры сильно попортило мои нервы при написании кода. У неё единственной 3 уникальные особенности: <br>не атакует в области, куда может сходить,<br>ходит на 2 клетки в начале хода,<br>может превращаться в другие фигуры по достижении вражеской стороны поля.<br>Последний пункт кстати не реализовал - идите в пень.<br>
+FigureInfo/Queen/name,Королева
+FigureInfo/Queen/battleDesc,Ходит по всем направлениям.
+FigureInfo/Queen/detailDesc,Другое название, Ферзь, заимствовано из персидского فرزین‎(Да-а-а... персидский не поддерживается...). Что можно перевести как 'визирь', 'советник'.
+FigureInfo/Rook/name,Ладья
+FigureInfo/Rook/battleDesc,Ходит по горизонтали и вертикали.
+FigureInfo/Rook/detailDesc,Ладья на английском - Rook, которое пошло от персидского رخ, что можно перевести как 'колесница'. Фиг знает почему старославяне решили назвать колесницу ладьёй.
+FigureInfo/Dr. Korner/name,Dr. Körner™
+FigureInfo/Dr. Korner/battleDesc,Ничего не делают. Это просто пачка хлебцов.
+FigureInfo/Dr. Korner/detailDesc,Ахахахахах, чё вы тут забыли, карамельные хлебцы Dr. Körner™))))
+FigureInfo/Hataqueen/name,Знаменосец
+FigureInfo/Hataqueen/battleDesc,Повышает урон всех пешек на 1 + количество погибших пешек.
+FigureInfo/Hataqueen/detailDesc,Очень долго возился с шейдером для переключения цвета на другой. Хотел универсальности, но получилось попроще.
+FigureInfo/Necro/name,Некромант
+FigureInfo/Necro/battleDesc,Может убивать союзные фигуры, повышая здоровье на половину от здоровья убитой фигуры (не меньше 1) и урон на 1.
+FigureInfo/Necro/detailDesc,Ультра-крутой чел. Сначала изучал просто магию, а когда понял что во время военных конфликтов можно и жизнь себе продлевать за счёт других, так вообще распоясался.
+FigureInfo/RookOnLogs/name,Ладья-на-бревнах
+FigureInfo/RookOnLogs/battleDesc,Может перемещаться только вдоль одной линии. Вместо хода можно совершить выстрел из бортовых пушек - урон по вражеским фигурам по бокам ладьи на расстоянии 2 клеток, или повернуться, чтобы получить возможность двигаться по другой линии.
+FigureInfo/RookOnLogs/detailDesc,Первая сделанная моделька для игры. Обычно перетаскивание кораблей на бревнах использовалось чтобы просто спустить их на воду. Видимо этот корабль заблудился.
+FigureInfo/Sniper/name,Снайпер
+FigureInfo/Sniper/battleDesc,Ходит и атакует на 1 клетку. Может дистанционно атаковать врагов, тратя патроны. Патроны не восстанавливаются в течении игры.
+FigureInfo/Sniper/detailDesc,Дизайн взят из видоса Epic Anime Chess от Creibis. 
+FigureInfo/TimePawn/name,Пешка времени
+FigureInfo/TimePawn/battleDesc,Ходит на 2 во все стороны. <br>При смерти одной из пешек все последующие в линии также умирают.
+FigureInfo/TimePawn/detailDesc,Таинственный странник во времени, который пытается предотвращать ужасные события, каждый раз отправлясь в прошлое. На самом деле под накидкой и шарооразным шлемом находится уставший человек. Он ненавидит свою судьбу.
+FigureInfo/TroyHorse/name,Троянский конь
+FigureInfo/TroyHorse/battleDesc,Может помещать внутрь себя до 3 фигур. В свой ход конь может либо поместить в себя, либо вытащить из себя фигуры. Ход коня считается завершенным, если он переместился на другую клетку.
+FigureInfo/TroyHorse/detailDesc,Это конечно не точная копия из знаменитого фильма, но зато ломает баланс игры будь здоров
