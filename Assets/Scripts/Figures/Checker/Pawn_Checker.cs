@@ -42,7 +42,7 @@ public class Pawn_Checker : FigureInteract
                             (int)_currentSquare.Position.y + (int)afterEnemyPos.y * 2);
 
                         Debug.Log($"EnemyDir: {(int)afterEnemyPos.x * 2} {(int)afterEnemyPos.y * 2}");
-                        if (_findedSquare != null)
+                        if (_findedSquare != null && _findedSquare?.currentFigure == null)
                         {
                             _createdMove = new AvaliableMove(_findedSquare);
                             _createdMove.damageFigures.Add(enemy);

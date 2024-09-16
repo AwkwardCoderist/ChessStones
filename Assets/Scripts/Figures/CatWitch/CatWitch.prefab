@@ -543,7 +543,7 @@ MonoBehaviour:
   _damageSoundVolume: 0.5
   _buttonCanvas: {fileID: 5588648277081815646}
   _controlEffect: {fileID: 6649345836099318595}
-  _delayToControl: 5
+  _delayToControl: 10
   _controlButton: {fileID: 6596582492703720269}
   _tokenTurns: CatWitchRemainTurns
   _readyText: GameUI/Actions/CatControl
