@@ -3,6 +3,8 @@
 Это документация по игровому проекту **ChesStone** - объединению коллекционных карточных игр (ККИ) и шахмат.
 
 ![haha, missing image =D](https://github.com/AwkwardCoderist/ChessStones/blob/main/scrnsht1.jpg?raw=true)
+![there is definetly something](https://github.com/AwkwardCoderist/ChessStones/blob/main/scrnsht2.jpg?raw=true)
+![it's seems like missing link...](https://github.com/AwkwardCoderist/ChessStones/blob/main/scrnsht3.jpg?raw=true)
 
 Игра представляет собой шахматы, есть возможность менять стандартные фигуры на другие, с параметрами ***здоровья*** и ***урона***, а также с дополнительными способностями или особенностями.
 
